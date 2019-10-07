@@ -1,0 +1,20 @@
+# playbook to add public key to authorized_key in  hosts in inventory file
+---
+-  hosts: all
+#   become: true
+#   become_user: "ansible"
+   gather_facts: false
+   ignore_errors: true
+   tasks:
+   - name:  make directory 
+     file:
+       path: "/home/ansible/.ssh"
+       state: directory
+   - name: create empty file
+     file:
+       path: "/home/ansible/.ssh/authorized_keys"
+       state: touch
+   - name: put pubkey
+     lineinfile:
+       path: "/home/ansible/.ssh/authorized_keys"
+       line: "{{ pubkey }}"  

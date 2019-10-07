@@ -1,0 +1,14 @@
+---
+- name: upgrade yum 
+  hosts: localhost
+  gather_facts: false
+  ignore_errors: true
+  become: true 
+  tasks:
+    - name: upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+      async: 7200
+      poll: 15
+      

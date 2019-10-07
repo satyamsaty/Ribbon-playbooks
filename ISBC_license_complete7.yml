@@ -1,0 +1,93 @@
+---
+- name: create stack
+  hosts: localhost
+  gather_facts: true
+  ignore_errors: false
+  tasks:
+  - name: Ansible start date
+    debug:
+      var=ansible_date_time.date
+  - name: ISBC
+    os_stack:
+       name: ISBC_active
+       tag: stack
+       state: present
+       validate_certs: false
+       template: Test_active_ISBC_SRIOV_22.yaml
+       parameters:
+           flavor: ISBC4VCPU
+           image: cSBC_V08.00.00R000
+           security_group: SONUS
+  - name: Wait until the active instance pings
+    wait_for: 
+       host: 10.34.224.111
+       port: 2024
+       delay: 60
+  - name: Checking the Mgmt IP is pingable or not
+    shell: ping -c2 10.34.224.111
+  - debug: var=a.stdout_lines
+  - name: To copy the config file to active node
+#    shell: scp -o  "stricthostkeychecking no" -i /home/ansible/cloud_ats.key -P 2024 /home/ansible/satyam/timeout1.sh root@10.34.224.111:/root
+#  - name: To run configuration in active node
+    shell: sh /home/ansible/satyam/timeout1.sh
+#  - name: To do SSH, login as a root,check the SBC service and node is running in active role
+#    shell : sh timeout1.sh 
+#    shell: ssh -o  "stricthostkeychecking no" -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.111 "egrep 'SBC service is now running|Node is running in ' /var/log/sonus/lca/lca.log"
+#    async: 1000
+#    poll: 10
+#    register: yum_sleeper
+
+#  - name: 'YUM - check on async task'
+#    async_status:
+#       jid: "{{ yum_sleeper.ansible_job_id }}"
+#    register: job_result
+#    until: job_result.finished
+#    retries: 30
+#    shell: ssh -o  "stricthostkeychecking no" -p 2024  -i /home/ansible/cloud_ats.key root@10.34.224.111 "cd /opt/sonus/sbx/scripts && checkRoleAssignment.sh "
+#    async: 320
+#    poll: 0
+#    register: b
+#  - debug: var=b.stdout_lines
+  - name: To check installed software version
+    shell: ssh -o UserKnownHostsFile=/dev/null -o  "stricthostkeychecking no" -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.111 "sh /opt/sonus/sbx/scripts/swinfo.sh"
+    register: d
+  - debug: var=d.stdout_lines
+  - name: ISBC
+    os_stack:
+       name: ISBC_standby
+       tag: stack
+       state: present
+       validate_certs: false
+       template: Test_standby_ISBC_SRIOV_22.yaml
+       parameters:
+           flavor: ISBC4VCPU
+           image: cSBC_V08.00.00R000
+           security_group: SONUS
+
+  - name: Wait until the standby instance pings 
+    wait_for:
+       host: 10.34.224.112
+       port: 2024
+       delay: 60
+#       search_regex: SBC service is now running
+#  - name: Waiting for Mgmt IP to comeup
+#    wait_for: timeout=320
+  - name: Checking the Mgmt IP is pingable or not
+    shell: ping -c5 10.34.224.112
+    register: a
+  - debug: var=a.stdout_lines
+#  - name: To do SSH, login as a root,check the SBC service and node is running in active role
+
+#    shell: ssh -o  "stricthostkeychecking no" -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.112 "egrep 'SBC service is now running|Node is running in ' /var/log/sonus/lca/lca.log"
+#    register: b
+#  - debug: var=b.stdout_lines
+  - name: To copy the config file to standby  node
+#    shell: scp -o  "stricthostkeychecking no" -i /home/ansible/cloud_ats.key -P 2024 /home/ansible/satyam/timeout1.sh root@10.34.224.111:/root
+#  - name: To run configuration in active node
+    shell: sh /home/ansible/satyam/timeout2.sh
+
+  - name: To check installed software version
+    shell: ssh -o  "stricthostkeychecking no" -o UserKnownHostsFile=/dev/null -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.112 "sh /opt/sonus/sbx/scripts/swinfo.sh"
+    register: c
+  - debug: var=c.stdout_lines
+

@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  become: true
+  tasks:
+   - name: install softwares
+     yum:
+      name: httpd
+      state: latest
+   - name: install python-pip
+     yum:
+       name: python-pip
+       state: latest

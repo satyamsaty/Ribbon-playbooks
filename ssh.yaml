@@ -1,0 +1,16 @@
+#playbook to create ssh-keygen on ansible-control node
+
+---
+- name: exchange keys between servers
+  become: yes
+  become_user: ansible
+  hosts: localhost
+  tasks:
+    - name: SSH KeyGen command
+      tags: run
+      shell: >
+        ssh-keygen -q -b 2048 -t rsa -N "" -C "creating SSH" -f ~/.ssh/id_rsa
+        creates="~/.ssh/id_rsa"
+
+#    - name: Copy the file from master to mwiapp02
+#      copy: src=/home/ansible/.ssh/id_rsa dest=/home/centos/.ssh/authorized_keys

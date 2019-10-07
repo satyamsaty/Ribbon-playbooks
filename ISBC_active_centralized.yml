@@ -1,0 +1,895 @@
+heat_template_version: 2015-04-30
+description: Template to setup and deploy a Standalone vSBC compute instances
+
+##################################################################################################
+# IMPORTANT NOTE to configure second management port 'mgt1': 
+# 
+#  1. By Default, configuration of second management port is commented out in this template.
+# 
+#  2. To enable configuration of second management port 'mgt1', search for the following tag and follow the instructions with the tag:
+#     Tag to search : 'MGT1_EDIT'
+#
+#  3. Add the entries for second management port 'mgt1' in metadata section of each instance corressponding to the entries 
+#     that are already there for 'mgt0' interface.
+#
+#     For example:
+#      In metadata section: add the IF metadata related data for second management port like:
+#
+#        IF4:
+#             str_replace:
+#               template: |
+#                 { "Port": "$port_name",
+#                   "DHCP": "$dhcp_flag",
+#                   "GWV4": "$gateway_ip_v4", 
+#                   "IPV4": "$ip_address_v4",
+#                   "GWV6": "$gateway_ip_v6",
+#                   "IPV6": "$ip_address_v6"
+#                 }
+#               params:
+#                 $port_name:  "Mgt1"
+#                 $dhcp_flag:  { get_param: isDhcpEnabledOnMgt1}
+#                 $gateway_ip_v4: { get_param: [mgt1Gateway,0] }
+#                 $ip_address_v4: { list_join: ['/', [ { get_param: [ mgt1IPAddress, 0] }, { get_param: [mgt1SubnetPrefix, 0]}]] }
+#                 $gateway_ip_v6: { get_param: [mgt1Gateway,1] }
+#                 $ip_address_v6: { list_join: ['/', [ { get_param: [ mgt1IPAddress, 1] }, { get_param: [mgt1SubnetPrefix, 1]}]] }
+#
+#
+# 1. Sample Environment content to be sourced with this template:
+#
+#    parameters:
+#
+#      # System Settings
+#      image:           myImage
+#      flavor:          cloudSBC.lite
+#      security_group:  vSBC_security_group
+#
+#      # Private Network Settings
+#      provider_network_mgt0: mgt0
+#      provider_network_mgt1: mgt1
+#      provider_network_ha:   ha0
+#      provider_network_pkt0: pkt0
+#      provider_network_pkt1: pkt1
+#
+# 2. To Enable/Disable SR-IOV on any interface, search for '<interfaceName> EDIT:'
+#    and follow instructions there
+#
+#    E.g. To Enable SRIOV on Packet Port 0 (pkt0):
+#         Search for: 'pkt0 EDIT:' (without quotes)
+#         (Replace pkt0 with mgt0, ha0 or pkt1 as applicable)
+#
+#    Sample code segment:
+#      # pkt0 EDIT: Below line:
+#      #   SR-IOV support:    uncomment
+#      #   No SR-IOV support: comment
+#      #binding:vnic_type: direct
+#
+#
+# 3. Additional private IPs will be queried by the template when launched as a comma-separeted input. 
+#    These IP addresses will be queried inside template at multiple places, and the procedure for the same is given in next point.
+#    Make sure that the comma-separated input doesn't have spaces between them. That would lead to template-load error.
+#
+# 4. Procedure for adding additional IP address to ports.
+#
+#    This involves the following steps which are described in detail below:
+#       - Private port creation and 
+#       - Meta data update.
+#
+#    Procedure:
+#
+#    a) Search for the tags "EDIT_PRIVATE_PORT_CREATION_PKT0" and "EDIT_PRIVATE_PORT_CREATION_PKT1"
+#       * Add additional IP address to the PKT ports by uncommenting out
+#         "- ip_address:" parameters and query the IP address from the list input as give below:
+#
+#         - ip_address: {get_param: [pktXAdditionalIPs,0]}
+#
+#       * Where X : { 0 for Pkt0, 1 for Pkt1 }
+#
+#       * Repeat this multiple times based on number
+#         of IP addresses to be assigned to the port
+#
+#    b) Appending Metadata content of server above the section METADATA_APPEND_ABOVE.
+#
+#         ALT_PKTX_01: { "IFName": "YYY", "IP": {get_param: [pktXAdditionalIPs,0]}}
+#
+#         * Where:
+#          - X can be 0 or 1.
+#          - ALT_PKTX_01 can be replaced with any valid name for alternate IP.
+#          - YYY is the corresponding IF name of PKT port. Eg: IF2 for Pkt0
+#
+##################################################################################################
+
+parameter_groups:
+- label: System Settings
+  description: System Level Settings
+  parameters:
+  #- image
+ # - flavor
+  - availabilityZoneName
+  - security_group
+  - sbc_system_name
+  #- sbc_standby_name
+  - personality
+  - mgmt_mode
+  - CinderVolumeID
+
+- label: Network Settings
+  description: Network Settings
+  parameters:
+  - provider_network_mgt0
+  # MGT1_EDIT: UNCOMMENT below lines to configure mgt1 interface
+  #- provider_network_mgt1
+  - provider_network_ha
+  - provider_network_pkt0
+  - provider_network_pkt1
+
+- label: mgt0 DHCP Settings
+  description: DHCP Settings for Management Port 0
+  parameters:
+  - isDhcpEnabledOnMgt0
+  - mgt0IPAddress
+  - mgt0SubnetPrefix
+  - mgt0Gateway
+
+  # MGT1_EDIT: UNCOMMENT below lines to configure mgt1 interface
+#- label: mgt1 DHCP Settings
+  #description: DHCP Settings for Management Port 1 
+  #parameters:
+  #- isDhcpEnabledOnMgt1
+  #- mgt1IPAddress
+  #- mgt1SubnetPrefix
+  #- mgt1Gateway
+
+- label: ha0 DHCP Settings
+  description: DHCP Settings for High Availability Port
+  parameters:
+  - isDhcpEnabledOnHa0
+  - ha0IPAddress
+  - ha0SubnetPrefix
+  - ha0Gateway
+
+- label: pkt0 DHCP Settings
+  description: DHCP Settings for Packet Port 0
+  parameters:
+  - isDhcpEnabledOnPkt0
+  - pkt0IPAddress
+  - pkt0SubnetPrefix
+  - pkt0Gateway
+  - vlanIdPkt0
+ # - pkt0AdditionalIPs
+
+- label: pkt1 DHCP Settings
+  description: DHCP Settings for Packet Port 1
+  parameters:
+  - isDhcpEnabledOnPkt1
+  - pkt1IPAddress
+  - pkt1SubnetPrefix
+  - pkt1Gateway
+  - vlanIdPkt1
+ # - pkt1AdditionalIPs
+
+- label: Instance Specific Settings
+  description: Instance Specific Settings
+  parameters:
+  - sbc_ceName
+  - sbc_ceRole
+  - sbc_ceMode
+  - sbc_rgIp
+
+- label: EMS Settings
+  description: EMS Settings
+  parameters:
+  - ems_user_name
+  - ems_password
+  - ems_ip_1
+  - ems_ip_2
+  - cluster_id
+#  - download_config
+
+#- label: OAM Settings
+#  description: OAM Settings
+#  parameters:
+#  - oam_ip_1
+#  - oam_ip_2
+
+
+
+parameters:
+
+############################
+# System Level Settings
+############################
+
+  image:
+    type: string
+    label: Image Name
+    description: Image to be used for launching the instance(s)
+  #  default: cSBC_V08.00.00R000
+
+
+  flavor:
+    type: string
+    label: Flavor
+    description: Flavor to be used for instance(s)
+   # default: ISBC4VCPU
+
+
+  security_group:
+    type: string
+    label: Security Group
+    description: Security group of instance(s)
+
+  sbc_system_name:
+    type: string
+    label: SBC System Name
+    description: SBC system name
+    default: ISBCHAC
+    
+  personality:
+    type: string
+    label: SBC Personality Type
+    description: Configures SBC instance to be Signaling,Media or Integrated node.
+    default: isbc
+
+
+  mgmt_mode:
+    type: string
+    label: SBC Management Mode
+    description: SBC Management Mode, centralized or distributed
+    default: centralized
+
+
+  availabilityZoneName:
+    type: string
+    label: Availability Zone
+    description: Name of the availability zone for this instance
+    default: ansible
+
+#  VolumeSize:
+#    type: string
+#    label: Cinder Volume Size
+#    description: Cinder volume size in GB
+#    default: "30"
+#    constraints:
+#    - length: { min: 1, max: 8 }
+#      description: Cinder volume length must be between 1 and 8 characters.
+#    - allowed_pattern: "[0-9]{1,8}"
+#      description: Cinder volume size must consist of numbers only.
+    
+  CinderVolumeID:
+    type: string
+    label: Cinder Volume ID
+    description: ID of existing cinder volume
+    default : 04f9b3ad-b9dc-464b-84ff-f87bbec3f139
+############################
+# Network Settings
+############################
+
+  provider_network_mgt0:
+    type: string
+    label: Management Port 0 Provider Network Name or ID
+    description: Name/ID of private network for mgt0.
+    default: PR_MGMT
+
+
+  # MGT1_EDIT: UNCOMMENT below lines to configure mgt1 interface
+  #provider_network_mgt1:
+  #  type: string
+  #  label: Management Port 1 Provider Network Name or ID
+  #  description: Name/ID of private network for mgt1.
+  #  constraints:
+  #    - custom_constraint: 'neutron.network'
+
+  provider_network_ha:
+    type: string
+    label: HA Port Private Network Name or ID
+    description: Name/ID of private network for ha0.
+    default: ha
+
+
+  provider_network_pkt0:
+    type: string
+    label: Packet Port 0 Provider Network Name or ID
+    description: Name/ID of private network for pkt0.
+    default: sriov_pkt0
+
+
+  provider_network_pkt1:
+    type: string
+    label: Packet Port 1 Provider Network Name or ID
+    description: Name/ID of private network for pkt1.
+    default: sriov_pkt1
+ 
+
+###########################################################
+# VLAN ID PKT interfaces
+# Keeping it a string value instead of integer, as we need
+# to support None value
+###########################################################
+
+  vlanIdPkt0:
+    type: string
+    label: Packet Port 0 VLAN ID
+    description: Packet Port 0 VLAN ID
+    default : 626
+
+  vlanIdPkt1:
+    type: string
+    label: Packet Port 1 VLAN ID
+    description: Packet Port 1 VLAN ID
+    default : 627
+
+############################
+# Instance Specific Settings
+############################
+  sbc_ceName:
+    type: string
+    label: SBC Instance Name
+    description: SBC Instance name.
+    default: "ISBCACTIVE"
+ 
+
+  sbc_ceRole:
+    type: string
+    label: SBC Configured CE Role
+    description: SBC Configured CE Role.
+    default: "ACTIVE"
+
+
+  sbc_ceMode:
+    type: string
+    label: SBC Configured CE Mode
+    description: SBC Configured CE Mode.
+    default: "sbc"
+
+
+  sbc_rgIp:
+    type: string
+    label: HA port IP address of one of the members of SBC Redundancy Group(RG). (Note - Provide 169.254.88.1 for the first node of RG)
+    description: SBC RG is formed by communicating over the provided IP. When adding 3rd or subsequent instance to RG, can provide HA IP of any of the instances that are up and running.
+    default: "192.168.2.112"
+
+################
+# EMS Settings
+################
+  ems_user_name:
+    type: string
+    label: EMS User Name
+    description: User name for registering with EMS
+    default: "None"
+
+  ems_password:
+    type: string
+    label: EMS Password
+    description: EMS registration password
+    hidden: true
+    default: "None"
+
+  ems_ip_1:
+    type: string
+    label: EMS IP 1
+    description: EMS IP Address 1 - e.g. 10.52.13.40 (No quotes required)
+    default: "None"
+
+  ems_ip_2:
+    type: string
+    label: EMS IP 2
+    description: EMS IP Address 2 - e.g. 51.12.30.24 (No quotes required)
+    default: "None"
+
+  cluster_id:
+    type: string
+    label: Cluster ID
+    description: Cluster/VNF ID value from EMS Cluster Mgmt.
+    default: "None"
+
+#  download_config:
+#    type: string
+#    label: Download Configuration from EMS
+#    description: Download Configuration from EMS
+#    default: True
+#    constraints:
+#      - allowed_values: [True,False]
+
+################
+# OAM Settings
+################
+#  oam_ip_1:
+#    type: string
+#    label: OAM IP 1
+#    description: OAM IP Address 1 - e.g. 10.52.13.40 (No quotes required)
+#    default: ""
+
+#  oam_ip_2:
+#    type: string
+#    label: OAM IP 2
+#    description: OAM IP Address 2 - e.g. 10.52.13.40 (No quotes required)
+#    default: ""
+
+##################################
+# IP address of the Non-DHCP ports
+##################################
+  mgt0IPAddress:
+    type: string
+    label: Management Port 0 IP Addresses
+    description: IPV4 and IPV6 addresses for mgt0 port. Provide address in following manner - IPV4,IPV6
+    default : "10.34.224.111"
+
+  # MGT1_EDIT: UNCOMMENT below lines to configure mgt1 interface
+  #mgt1IPAddress:
+  #  type: comma_delimited_list
+  #  label: Management Port 1 IP Addresses
+  #  description: IPV4 and IPV6 addresses for mgt1 port. Provide address in following manner - IPV4,IPV6
+  #  default : ""
+
+  ha0IPAddress:
+    type: string
+    label: High Availability Port IP Address
+    description: IPV4 address for ha0 port
+    default : 192.168.2.111
+
+  pkt0IPAddress:
+    type: string
+    label: Packet Port 0 IP Address
+    description: IPV4 and IPV6 addresses for pkt0 port. Provide address in following manner - IPV4,IPV6
+    default : "10.34.226.111"
+
+  pkt1IPAddress:
+    type: string
+    label: Packet Port 1 IP Address
+    description: IPV4 and IPV6 addresses for pkt1 port. Provide address in following manner - IPV4,IPV6
+    default : "10.34.227.111"
+
+####################################
+# Netmask for each Non-DHCP networks
+####################################
+  mgt0SubnetPrefix:
+    type: string
+    label: Management Port 0 Subnet Prefix
+    description: Subnet Prefix for mgt0 port. Provide prefix values in following manner - PrefixV4,PrefixV6
+    default : "24"
+
+  # MGT1_EDIT: UNCOMMENT below lines to configure mgt1 interface
+  #mgt1SubnetPrefix:
+  #  type: comma_delimited_list
+  #  label: Management Port 1 Subnet Prefix
+  #  description: Subnet Prefix for mgt1 port. Provide prefix values in following manner - PrefixV4,PrefixV6
+  #  default : ""
+
+  ha0SubnetPrefix:
+    type: string
+    label: High Availability Port Subnet Prefix
+    description: Subnet Prefix for ha0 port
+    default : 24
+
+  pkt0SubnetPrefix:
+    type: string
+    label: Packet Port 0 Subnet Prefix. Provide prefix values in following manner - PrefixV4,PrefixV6
+    description: Subnet Prefix for pkt0 port
+    default : "24"
+
+  pkt1SubnetPrefix:
+    type: string
+    label: Packet Port 1 Subnet Prefix. Provide prefix values in following manner - PrefixV4,PrefixV6
+    description: Subnet Prefix for pkt1 port
+    default : "24"
+
+###############################
+# Non DHCP Network's gateway IP
+###############################
+
+  mgt0Gateway:
+    type: string
+    label: Management Port 0 Gateway IP
+    description: Gateway IP Address for mgt0 port. Provide gateway address in following manner - IPV4,IPV6
+    default : "10.34.224.1"
+
+  # MGT1_EDIT: UNCOMMENT below lines to configure mgt1 interface
+  #mgt1Gateway:
+  #  type: comma_delimited_list
+  #  label: Management Port 1 Gateway IP
+  #  description: Gateway IP Address for mgt1 port. Provide gateway address in following manner - IPV4,IPV6
+  #  default : ""
+
+  ha0Gateway:
+    type: string
+    label: High Availability Port Gateway IP
+    description: Gateway IP Address for ha0 port
+    default : 192.168.2.1
+
+  pkt0Gateway:
+    type: string
+    label: Packet Port 0 Gateway IP
+    description: Gateway IP Address for pkt0 port. Provide gateway address in following manner - IPV4,IPV6
+    default : "10.34.226.1"
+
+  pkt1Gateway:
+    type: string
+    label: Packet Port 1 Gateway IP
+    description: Gateway IP Address for pkt1 port. Provide gateway address in following manner - IPV4,IPV6 
+    default : "10.34.227.1"
+
+###############################
+# DHCP flags
+###############################
+
+  isDhcpEnabledOnMgt0:
+    type: string
+    label: Is DHCP enabled on Mgt0 Subnet?
+    description: Is DHCP enabled on Mgt0 Subnet?
+    default : False
+    constraints:
+      - allowed_values: [True,False]
+
+  # MGT1_EDIT: UNCOMMENT below lines to configure mgt1 interface
+  #isDhcpEnabledOnMgt1:
+  #  type: string
+  #  label: Is DHCP enabled on Mgt1 Subnet?
+  #  description: Is DHCP enabled on Mgt1 Subnet?
+  #  default : False
+  #  constraints:
+  #    - allowed_values: [True,False]
+
+  isDhcpEnabledOnHa0:
+    type: string
+    label: Is DHCP enabled on Ha0 Subnet?
+    description: Is DHCP enabled on Ha0 Subnet?
+    default : False
+    constraints:
+      - allowed_values: [True,False]
+
+  isDhcpEnabledOnPkt0:
+    type: string
+    label: Is DHCP enabled on Pkt0 Subnet?
+    description: Is DHCP enabled on Pkt0 Subnet?
+    default : False
+    constraints:
+      - allowed_values: [True,False]
+
+  isDhcpEnabledOnPkt1:
+    type: string
+    label: Is DHCP enabled on Pkt1 Subnet?
+    description: Is DHCP enabled on Pkt1 Subnet?
+    default : False
+    constraints:
+      - allowed_values: [True,False]
+
+###################
+# Alternate IP list
+###################
+
+  # pkt0AdditionalIPs:
+    # type: comma_delimited_list
+    # label: comma separated list of alternate IPs for pkt0
+    # description: comma separated list of alternate IPs for pkt0
+    # default: ""
+
+  # pkt1AdditionalIPs:
+    # type: comma_delimited_list
+    # label: comma separated list of alternate IPs for pkt1
+    # description: comma separated list of alternate IPs for pkt1
+    # default: ""
+
+###############################
+# SBC login credentials
+###############################
+
+# Resource definitions for all openstack objects to be configured during
+# template execution
+resources:
+
+  # Create active vSBC instance
+  vSBC_ACTIVE:
+    type: OS::Nova::Server
+    properties:
+      name: { get_param: "OS::stack_name" }
+      image: { get_param: image }
+      flavor: { get_param: flavor }
+      config_drive: True
+      availability_zone: ansible
+      #personality: 
+        #"baseConfig.cli": {get_file: "RIBBON_BASE_CONFIG.cli"}
+        #"baseConfig.cli": {get_file: "http://10.11.12.13/sbcCliFiles/RIBBON_BASE_CONFIG.cli"}
+
+      # Attach previously created network ports to the instance
+      networks:
+        - port: { get_resource: mgt0_port1 }
+        - port: { get_resource: ha0_port1 }
+        - port: { get_resource: pkt0_port1 }
+        - port: { get_resource: pkt1_port1 }
+        # MGT1_EDIT: UNCOMMENT below lines to configure mgt1 interface
+        #- port: { get_resource: mgt1_port1 }
+
+      # Publish the assigned floating IP addresses with appended subnet mask to the openstack metadata service.
+      # Subnet prefix for floating ips not used - hard coded to 32 for consistencey.
+      metadata:
+        IF0:
+             str_replace:
+               template: |
+                 { "Port": "$port_name",
+                   "DHCP": "$dhcp_flag",
+                   "GWV4": "$gateway_ip_v4", 
+                   "IPV4": "$ip_address_v4"
+                 }
+               params:
+                 $port_name:  "Mgt0"
+                 $dhcp_flag:  { get_param: isDhcpEnabledOnMgt0}
+                 $gateway_ip_v4: { get_param: mgt0Gateway }
+                 $ip_address_v4: { list_join: ['/', [ { get_param: mgt0IPAddress }, { get_param: mgt0SubnetPrefix }]] }
+
+        IF1:
+             str_replace:
+               template: |
+                 { "Port": "$port_name",
+                   "DHCP": "$dhcp_flag",
+                   "GW$ip_version": "$gateway_ip", 
+                   "IP$ip_version": "$ip_address"
+                 }
+               params:
+                 $port_name:  "Ha0"
+                 $dhcp_flag:  { get_param: isDhcpEnabledOnHa0}
+                 $ip_version: "V4"
+                 $gateway_ip: { get_param: ha0Gateway }
+                 $ip_address: { list_join: ['/', [ { get_param: ha0IPAddress }, { get_param: ha0SubnetPrefix}]] }
+
+        IF2:
+             str_replace:
+               template: |
+                 { "Port": "$port_name",
+                   "DHCP": "$dhcp_flag",
+                   "GWV4": "$gateway_ip_v4", 
+                   "IPV4": "$ip_address_v4",
+                   "VlanId": "$vlan_id"
+                 }
+               params:
+                 $port_name:  "Pkt0"
+                 $dhcp_flag:  { get_param: isDhcpEnabledOnPkt0}
+                 $gateway_ip_v4: { get_param: pkt0Gateway }
+                 $ip_address_v4: { list_join: ['/', [ { get_param: pkt0IPAddress }, { get_param: pkt0SubnetPrefix }]] }
+                 $vlan_id:    { get_param: vlanIdPkt0 }
+
+        IF3:
+             str_replace:
+               template: |
+                 { "Port": "$port_name",
+                   "DHCP": "$dhcp_flag",
+                   "GWV4": "$gateway_ip_v4", 
+                   "IPV4": "$ip_address_v4",
+                   "VlanId": "$vlan_id"
+                 }
+               params:
+                 $port_name:  "Pkt1"
+                 $dhcp_flag:  { get_param: isDhcpEnabledOnPkt1}
+                 $gateway_ip_v4: { get_param: pkt1Gateway }
+                 $ip_address_v4: { list_join: ['/', [ { get_param: pkt1IPAddress }, { get_param: pkt1SubnetPrefix }]] }
+                 $vlan_id:    { get_param: vlanIdPkt1 }
+
+        ClusterIp: { get_param: sbc_rgIp}
+
+        #ALT_PKT0_01: { "IFName": "IF2", "IP": {get_param: [pkt0AdditionalIPs,0]}}
+        #ALT_PKT0_02: { "IFName": "IF2", "IP": {get_param: [pkt0AdditionalIPs,1]}}
+        #ALT_PKT1_01: { "IFName": "IF3", "IP": {get_param: [pkt1AdditionalIPs,0]}}
+        #ALT_PKT1_02: { "IFName": "IF3", "IP": {get_param: [pkt1AdditionalIPs,1]}}
+
+      # METADATA_APPEND_ABOVE
+      # Make sure that the indentation is maintained same as the existing
+      # metadata elements. Remove only pound sign above. Don't remove spaces.
+
+      # Set the format to RAW to pass data directly as userdata set the floating and virtual IP counts
+      user_data_format: RAW
+      user_data:
+        str_replace:
+          template: |
+                #cloud-config
+                ### USER EDITABLE SECTION FOR SSH KEYS ###
+                users:
+                    - name: admin
+                      ssh-authorized-keys:
+                        - ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA4oGIi+0mRS9Q25ln5/gKe1mmR7cfVuFxRQONVbjq8y+JB0g2T49b1Bf8xRhyhkKgdbIbEWdcmboSpTegt6zM0rz6Yw/73c3NVy60CX47t55GCCFYXxt3uwgRlN/9KX1mETCYOSD5AZ7e9YXvbd6/hUKkK/o8Zrhch9ckR2nVSe0v1wob4MMhmC1e9LV5tvk6zAIdmTWOYcrg0Yd6yHRQbNjlVFpQ147TPGy12+tDytqEW+09DQZqvhuiwSyxk3lBlNJYfCT2VidsS2+MQYD+t2REc65vcq/EvXuyuwpvv/IIjX2BBMCG7fMXkGh0wnIPoHbUCNfq1Zr2JGqZ6D8GIQ==
+                      plain_text_passwd: admin
+                      lock_passwd: false
+                    - name: linuxadmin
+                      ssh-authorized-keys:
+                        - ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA4oGIi+0mRS9Q25ln5/gKe1mmR7cfVuFxRQONVbjq8y+JB0g2T49b1Bf8xRhyhkKgdbIbEWdcmboSpTegt6zM0rz6Yw/73c3NVy60CX47t55GCCFYXxt3uwgRlN/9KX1mETCYOSD5AZ7e9YXvbd6/hUKkK/o8Zrhch9ckR2nVSe0v1wob4MMhmC1e9LV5tvk6zAIdmTWOYcrg0Yd6yHRQbNjlVFpQ147TPGy12+tDytqEW+09DQZqvhuiwSyxk3lBlNJYfCT2VidsS2+MQYD+t2REc65vcq/EvXuyuwpvv/IIjX2BBMCG7fMXkGh0wnIPoHbUCNfq1Zr2JGqZ6D8GIQ==
+                      plain_text_passwd: sonus
+                      lock_passwd: false
+                    - name: root
+                      ssh-authorized-keys:
+                        - ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA4oGIi+0mRS9Q25ln5/gKe1mmR7cfVuFxRQONVbjq8y+JB0g2T49b1Bf8xRhyhkKgdbIbEWdcmboSpTegt6zM0rz6Yw/73c3NVy60CX47t55GCCFYXxt3uwgRlN/9KX1mETCYOSD5AZ7e9YXvbd6/hUKkK/o8Zrhch9ckR2nVSe0v1wob4MMhmC1e9LV5tvk6zAIdmTWOYcrg0Yd6yHRQbNjlVFpQ147TPGy12+tDytqEW+09DQZqvhuiwSyxk3lBlNJYfCT2VidsS2+MQYD+t2REc65vcq/EvXuyuwpvv/IIjX2BBMCG7fMXkGh0wnIPoHbUCNfq1Zr2JGqZ6D8GIQ==
+                      plain_text_passwd: sonus1                    
+                      lock_passwd: false
+                runcmd:
+                    - [ usermod, -p, '$6$io3njQos$gZtBJ4MazQeWC0beqQwRPUDZCQcKXhMr2B8QLWYGajchR2BtkyHPvBTCQj0LctHAFaYTwbsIsUkm12ta4IoLe/', linuxadmin ]
+                    - sed -i -e "/^AllowUsers/s/\slinuxadmin\(\s\|$\)/ /g" -e "/^AllowUsers/s/\sroot\(\s\|$\)/ /g" /etc/ssh/sshd_config
+                    - sed -i "/^AllowUsers/s/AllowUsers /AllowUsers root linuxadmin /" /etc/ssh/sshd_config
+                    - sed -i "/PasswordAuthentication no/s/PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/sshd_config
+                    - sed -i "/^PermitRootLogin/s/ no/ yes/" /etc/ssh/sshd_config
+                    - sed -i "s/allowSshAccess=n/allowSshAccess=y/" /opt/sonus/conf/sbx.conf
+                write_files:
+                -   content: |
+                        {
+                          "CEName"                   : "$ce_name",
+                          "CEMode"                   : "$ce_mode",
+                          "SystemName"               : "$system_name",
+                          "SbcPersonalityType"       : "$personality",
+                          "SbcMgmtMode"              : "$mgmt_mode",
+                          "PeerCEName"               : "vsbc2",
+                          "PeerCEHa0IPv4Address"     : "$peerIp",
+                          "PeerCEHa0IPv4Prefix"      : "24",
+                          "EmsUsername"              : "$ems_user_name",
+                          "EmsPassword"              : "$ems_password",
+                          "EmsIP"                    : [ "$ems_ip_1", "$ems_ip_2" ],
+                          "CERole"                   : "$ce_role",
+                          "EmsDownloadConfig"        : "False",
+                          "cinderVolumeIdForLogs"    : "$cinderVolumeIdForLogs",
+                          "TemplateName"             : "heatRgNoDhcpDualStack.yaml",
+                          "TemplateVersion"          : "V08.00.00R000",
+                          "EmsPrivateNodeParameters" : { "cluster_id": "$cluster_id","vnfc_id":"$vnfc_id"}
+                        }
+                    path: /opt/sonus/conf/userData.json
+                bootcmd:
+                -   /opt/sonus/bin/mountVolume.sh -v "$cinderVolumeIdForLogs"
+
+          params:
+              $ce_name:        { get_param: sbc_ceName }
+              $ce_mode:        { get_param: sbc_ceMode }
+              $system_name:    { get_param: sbc_system_name }
+              $personality:    { get_param: personality }
+              $mgmt_mode:      { get_param: mgmt_mode }
+              #$peer_name:      { get_param: sbc_standby_name }
+              $ems_user_name:  { get_param: ems_user_name }
+              $ems_password:   { get_param: ems_password }
+              $ems_ip_1:       { get_param: ems_ip_1 }
+              $ems_ip_2:       { get_param: ems_ip_2 }
+              $cluster_id:     { get_param: cluster_id }
+              $cinderVolumeIdForLogs: { get_param: CinderVolumeID }
+              $ce_role:        { get_param: sbc_ceRole }
+              $vnfc_id:        { list_join: ['-', [ { get_param: "OS::stack_name" }, { get_param: cluster_id }, '1']] }
+ #             $adminSshKey:           { get_param: adminSshKey }
+              $peerIp:                { get_param: sbc_rgIp}
+ #             $linuxAdminSshKey:      { get_param: linuxAdminSshKey }
+ #             $adminPassword:         { get_param: adminPassword }
+ #             $linuxAdminPassword:    { get_param: linuxAdminPassword }
+
+
+  # Create the four required virtual nics (ports) to attach to virtual SBC instance 1
+
+  # Private Port Creation.
+
+  mgt0_port1:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_param : provider_network_mgt0 }
+      fixed_ips:
+        - ip_address: { get_param: mgt0IPAddress }
+        #- ip_address: { get_param: [mgt0IPAddress,1]}
+
+      # mgt0 EDIT: Below line:
+      #   SR-IOV support:    uncomment
+      #   No SR-IOV support: comment
+      #binding:vnic_type: direct
+      #security_groups:
+      #  - { get_param: security_group }
+      security_groups:
+        - { get_resource: management_security_group }
+
+  # MGT1_EDIT: UNCOMMENT below lines to configure mgt1 interface
+  #mgt1_port1:
+  #  type: OS::Neutron::Port
+  #  properties:
+  #    network: { get_param : provider_network_mgt1 }
+  #    fixed_ips:
+  #      - ip_address: { get_param: [mgt1IPAddress,0]}
+  #      - ip_address: { get_param: [mgt1IPAddress,1]}
+  #
+  #    # mgt1 EDIT: Below line:
+  #    #   SR-IOV support:    uncomment
+  #    #   No SR-IOV support: comment
+  #    #binding:vnic_type: direct
+  #    security_groups:
+  #      - { get_param: security_group }
+
+  ha0_port1:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_param : provider_network_ha }
+      fixed_ips:
+        - ip_address: { get_param: ha0IPAddress}
+
+      # ha0 EDIT: Below line:
+      #   SR-IOV support:    uncomment
+      #   No SR-IOV support: comment
+      #binding:vnic_type: direct
+
+  # EDIT_PRIVATE_PORT_CREATION_PKT0
+  pkt0_port1:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_param : provider_network_pkt0 }
+      fixed_ips:
+        - ip_address: { get_param: pkt0IPAddress}
+        #- ip_address: { get_param: [pkt0IPAddress,1]}
+        #- ip_address: {get_param: [pkt0AdditionalIPs,0]}
+        #- ip_address: {get_param: [pkt0AdditionalIPs,1]}
+
+      # pkt0 EDIT: Below line:
+      #   SR-IOV support:    uncomment
+      #   No SR-IOV support: comment
+      binding:vnic_type: direct
+      #security_groups:
+      #  - { get_param: security_group }
+
+  # EDIT_PRIVATE_PORT_CREATION_PKT1
+  pkt1_port1:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_param : provider_network_pkt1 }
+      fixed_ips:
+        - ip_address: { get_param: pkt1IPAddress }
+        #- ip_address: { get_param: [pkt1IPAddress,1]}
+        #- ip_address: {get_param: [pkt1AdditionalIPs,0]}
+        #- ip_address: {get_param: [pkt1AdditionalIPs,1]}
+
+      # pkt1 EDIT: Below line:
+      #   SR-IOV support:    uncomment
+      #   No SR-IOV support: comment
+      binding:vnic_type: direct
+      #security_groups:
+      #  - { get_resource: management_security_group }
+
+  management_security_group:
+    type: OS::Neutron::SecurityGroup
+    properties:
+     description: "SBC Management v4 Security Policy"
+     name: {list_join: ['-', [ 'secgroup-SBC-V4-MGT', {get_param: "OS::stack_name"}]]}
+     rules: [
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, protocol: ICMP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 22, port_range_max: 22, protocol: TCP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 80, port_range_max: 80, protocol: TCP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 123, port_range_max: 123, protocol: UDP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 161, port_range_max: 162, protocol: UDP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 443, port_range_max: 443, protocol: TCP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 444, port_range_max: 444, protocol: TCP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 2022, port_range_max: 2022, protocol: TCP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 2024, port_range_max: 2024, protocol: TCP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 3054, port_range_max: 3055, protocol: UDP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 3057, port_range_max: 3057, protocol: UDP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 3057, port_range_max: 3057, protocol: UDP, ethertype: IPv4},
+       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 8443, port_range_max: 8443, protocol: TCP, ethertype: IPv4},
+#       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 50017, port_range_max: 50017, protocol: TCP, ethertype: IPv4},
+#       {direction: ingress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 50017, port_range_max: 50017, protocol: UDP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, protocol: ICMP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 22, port_range_max: 22, protocol: TCP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 123, port_range_max: 123, protocol: UDP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 161, port_range_max: 162, protocol: UDP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 443, port_range_max: 443, protocol: TCP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 444, port_range_max: 444, protocol: TCP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 2022, port_range_max: 2022, protocol: TCP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 2024, port_range_max: 2024, protocol: TCP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 3054, port_range_max: 3055, protocol: UDP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 3057, port_range_max: 3057, protocol: UDP, ethertype: IPv4},
+#       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 5093, port_range_max: 5093, protocol: UDP, ethertype: IPv4},
+       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 1024, port_range_max: 65535, protocol: TCP, ethertype: IPv4},
+#       {direction: egress, remote_ip_prefix: 0.0.0.0/0, port_range_min: 50017, port_range_max: 50017, protocol: UDP, ethertype: IPv4},
+       ]
+
+# Added to enable to attach 30Gbytes Cinder Volume
+#  cinder_volume:
+#    type: OS::Cinder::Volume
+#    deletion_policy: Retain
+#    properties:
+#      size: { get_param: VolumeSize }
+
+  volume_attachment:
+    depends_on: vSBC_ACTIVE
+    type: OS::Cinder::VolumeAttachment
+    properties: 
+      volume_id: { get_param: CinderVolumeID } 
+#      volume_id: { get_resource: cinder_volume } 
+      instance_uuid: { get_resource: vSBC_ACTIVE }
+      mountpoint: /dev/vdc
+
+# output some stuff for debug
+outputs:
+  instance_name:
+    description: Name of the instance
+    value: { get_attr: [vSBC_ACTIVE, name] }

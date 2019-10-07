@@ -1,0 +1,54 @@
+---
+- name: create stack
+  hosts: localhost
+  gather_facts: false
+  ignore_errors: true
+  tasks:
+  - name: Ansible start date
+    debug:
+      var=ansible_date_time.date
+  - name: ISBC
+    os_stack:
+       name: ISBC_active
+       tag: stack
+       state: present
+       validate_certs: false
+       template: ISBC_active_centralized.yml
+       parameters:
+           flavor: ansible_master
+           image: cSBC_V08.00.00R000
+           security_group: SONUS
+  - name: Wait until the active instance pings
+    wait_for: 
+       host: 10.34.224.111
+       port: 2024
+  - name: Checking the Mgmt IP is pingable or not
+    shell: ping -c2 10.34.224.111
+  - debug: var=a.stdout_lines  
+  - name: "Get contents of log file: {{ log_file }}"
+    command: "cat /var/log/sonus/lca/lca.log"
+    changed_when: false  # Do not show that state was "changed" since we are simply reading the file!
+    register: cat_output
+
+  - name: "Create variable to store line count (for clarity)"
+    set_fact:
+      line_count: "{{ cat_output.stdout_lines | length }}"
+
+##### DO SOME OTHER TASKS (LIKE DEPLOYING APP) #####
+
+  - name: "Wait until '{{ pattern_to_match}}' is found inside log file: {{ log_file }}"
+    wait_for:
+      path: /var/log/sonus/lca/lca.log
+      search_regex: "^{{ pattern_to_skip_preexisting_lines }}SBC service is now running$"
+      state: present
+    vars:
+      pattern_to_skip_preexisting_lines : "(.*\\n){% raw %}{{% endraw %}{{ line_count }},{% raw %}}{% endraw %}"
+
+
+  - name: To do SSH, login as a root,check the SBC service and node is running in active role
+    shell: ssh -o  "stricthostkeychecking no" -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.111 "egrep 'SBC service is now running|Node is running in ' /var/log/sonus/lca/lca.log"
+
+  - name: To check installed software version
+    shell: ssh -o  "stricthostkeychecking no" -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.111 "sh /opt/sonus/sbx/scripts/swinfo.sh"
+    register: d
+  - debug: var=d.stdout_lines

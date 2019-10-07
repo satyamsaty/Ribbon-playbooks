@@ -1,0 +1,1274 @@
+2019-08-10 18:08:06,161 p=26684 u=ansible |  ansible-playbook 2.8.2
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/ansible/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-08-10 18:08:06,161 p=26684 u=ansible |  Using /etc/ansible/ansible.cfg as config file
+2019-08-10 18:08:06,171 p=26684 u=ansible |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:08:06,171 p=26684 u=ansible |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:08:06,171 p=26684 u=ansible |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:08:06,174 p=26684 u=ansible |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-08-10 18:08:06,592 p=26684 u=ansible |  PLAYBOOK: ISBC_license_complete7.yml ***********************************************************************************************************************************
+2019-08-10 18:08:06,593 p=26684 u=ansible |  1 plays in ISBC_license_complete7.yml
+2019-08-10 18:08:06,625 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2019-08-10 18:08:06,630 p=26684 u=ansible |  PLAY [create stack] ****************************************************************************************************************************************************
+2019-08-10 18:08:06,637 p=26684 u=ansible |  TASK [Gathering Facts] *************************************************************************************************************************************************
+2019-08-10 18:08:06,637 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:2
+2019-08-10 18:08:06,637 p=26684 u=ansible |  Saturday 10 August 2019  18:08:06 +0530 (0:00:00.056)       0:00:00.056 ******* 
+2019-08-10 18:08:06,653 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:08:06,653 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:08:06,663 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440686.65-252877480952399 `" && echo ansible-tmp-1565440686.65-252877480952399="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440686.65-252877480952399 `" ) && sleep 0'
+2019-08-10 18:08:06,975 p=26684 u=ansible |  <localhost> Attempting python interpreter discovery
+2019-08-10 18:08:06,975 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo PLATFORM; uname; echo FOUND; command -v '"'"'/usr/bin/python'"'"'; command -v '"'"'python3.7'"'"'; command -v '"'"'python3.6'"'"'; command -v '"'"'python3.5'"'"'; command -v '"'"'python2.7'"'"'; command -v '"'"'python2.6'"'"'; command -v '"'"'/usr/libexec/platform-python'"'"'; command -v '"'"'/usr/bin/python3'"'"'; command -v '"'"'python'"'"'; echo ENDFOUND && sleep 0'
+2019-08-10 18:08:06,985 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python && sleep 0'
+2019-08-10 18:08:07,010 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-08-10 18:08:07,011 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmperQNYj TO /home/ansible/.ansible/tmp/ansible-tmp-1565440686.65-252877480952399/AnsiballZ_setup.py
+2019-08-10 18:08:07,012 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440686.65-252877480952399/ /home/ansible/.ansible/tmp/ansible-tmp-1565440686.65-252877480952399/AnsiballZ_setup.py && sleep 0'
+2019-08-10 18:08:07,019 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440686.65-252877480952399/AnsiballZ_setup.py && sleep 0'
+2019-08-10 18:08:08,339 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440686.65-252877480952399/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:08:08,366 p=26684 u=ansible |  ok: [localhost]
+2019-08-10 18:08:08,371 p=26684 u=ansible |  META: ran handlers
+2019-08-10 18:08:08,382 p=26684 u=ansible |  TASK [Ansible start date] **********************************************************************************************************************************************
+2019-08-10 18:08:08,383 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:7
+2019-08-10 18:08:08,383 p=26684 u=ansible |  Saturday 10 August 2019  18:08:08 +0530 (0:00:01.745)       0:00:01.802 ******* 
+2019-08-10 18:08:08,435 p=26684 u=ansible |  ok: [localhost] => {
+    "ansible_date_time.date": "2019-08-10"
+}
+2019-08-10 18:08:08,447 p=26684 u=ansible |  TASK [ISBC] ************************************************************************************************************************************************************
+2019-08-10 18:08:08,447 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:10
+2019-08-10 18:08:08,447 p=26684 u=ansible |  Saturday 10 August 2019  18:08:08 +0530 (0:00:00.064)       0:00:01.867 ******* 
+2019-08-10 18:08:08,495 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:08:08,495 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:08:08,503 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399 `" && echo ansible-tmp-1565440688.49-185011926461399="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399 `" ) && sleep 0'
+2019-08-10 18:08:08,627 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/openstack/os_stack.py
+2019-08-10 18:08:08,627 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmp_3cIxx TO /home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/AnsiballZ_os_stack.py
+2019-08-10 18:08:08,628 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/ /home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:08:08,636 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:08:08,998 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:08:09,040 p=26684 u=ansible |  The full traceback is:
+Traceback (most recent call last):
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/AnsiballZ_os_stack.py", line 114, in <module>
+    _ansiballz_main()
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/AnsiballZ_os_stack.py", line 106, in _ansiballz_main
+    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/AnsiballZ_os_stack.py", line 49, in invoke_module
+    imp.load_module('__main__', mod, module, MOD_DESC)
+  File "/tmp/ansible_os_stack_payload_uGTsoW/__main__.py", line 276, in <module>
+  File "/tmp/ansible_os_stack_payload_uGTsoW/__main__.py", line 238, in main
+  File "/tmp/ansible_os_stack_payload_uGTsoW/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py", line 154, in openstack_cloud_from_module
+  File "/usr/lib/python2.7/site-packages/openstack/__init__.py", line 59, in connect
+    options=options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/__init__.py", line 36, in get_cloud_region
+    return config.get_one(options=parsed_options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/loader.py", line 1077, in get_one
+    auth_plugin = loader.load_from_options(**config['auth'])
+  File "/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py", line 162, in load_from_options
+    raise exceptions.MissingRequiredOptions(missing_required)
+keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url
+
+2019-08-10 18:08:09,041 p=26684 u=ansible |  fatal: [localhost]: FAILED! => {
+    "changed": false, 
+    "module_stderr": "Traceback (most recent call last):\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/AnsiballZ_os_stack.py\", line 114, in <module>\n    _ansiballz_main()\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/AnsiballZ_os_stack.py\", line 106, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565440688.49-185011926461399/AnsiballZ_os_stack.py\", line 49, in invoke_module\n    imp.load_module('__main__', mod, module, MOD_DESC)\n  File \"/tmp/ansible_os_stack_payload_uGTsoW/__main__.py\", line 276, in <module>\n  File \"/tmp/ansible_os_stack_payload_uGTsoW/__main__.py\", line 238, in main\n  File \"/tmp/ansible_os_stack_payload_uGTsoW/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py\", line 154, in openstack_cloud_from_module\n  File \"/usr/lib/python2.7/site-packages/openstack/__init__.py\", line 59, in connect\n    options=options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/__init__.py\", line 36, in get_cloud_region\n    return config.get_one(options=parsed_options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/loader.py\", line 1077, in get_one\n    auth_plugin = loader.load_from_options(**config['auth'])\n  File \"/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py\", line 162, in load_from_options\n    raise exceptions.MissingRequiredOptions(missing_required)\nkeystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url\n", 
+    "module_stdout": "", 
+    "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", 
+    "rc": 1
+}
+2019-08-10 18:08:09,041 p=26684 u=ansible |  ...ignoring
+2019-08-10 18:08:09,052 p=26684 u=ansible |  TASK [Wait until the active instance pings] ****************************************************************************************************************************
+2019-08-10 18:08:09,052 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:21
+2019-08-10 18:08:09,052 p=26684 u=ansible |  Saturday 10 August 2019  18:08:09 +0530 (0:00:00.604)       0:00:02.471 ******* 
+2019-08-10 18:08:09,062 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:08:09,062 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:08:09,069 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440689.06-173779115036423 `" && echo ansible-tmp-1565440689.06-173779115036423="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440689.06-173779115036423 `" ) && sleep 0'
+2019-08-10 18:08:09,197 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/utilities/logic/wait_for.py
+2019-08-10 18:08:09,197 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmpSuUoaV TO /home/ansible/.ansible/tmp/ansible-tmp-1565440689.06-173779115036423/AnsiballZ_wait_for.py
+2019-08-10 18:08:09,198 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440689.06-173779115036423/ /home/ansible/.ansible/tmp/ansible-tmp-1565440689.06-173779115036423/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:08:09,205 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440689.06-173779115036423/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:09:09,320 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440689.06-173779115036423/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:09:09,337 p=26684 u=ansible |  ok: [localhost] => {
+    "changed": false, 
+    "elapsed": 60, 
+    "invocation": {
+        "module_args": {
+            "active_connection_states": [
+                "ESTABLISHED", 
+                "FIN_WAIT1", 
+                "FIN_WAIT2", 
+                "SYN_RECV", 
+                "SYN_SENT", 
+                "TIME_WAIT"
+            ], 
+            "connect_timeout": 5, 
+            "delay": 60, 
+            "exclude_hosts": null, 
+            "host": "10.34.224.111", 
+            "msg": null, 
+            "path": null, 
+            "port": 2024, 
+            "search_regex": null, 
+            "sleep": 1, 
+            "state": "started", 
+            "timeout": 300
+        }
+    }, 
+    "match_groupdict": {}, 
+    "match_groups": [], 
+    "path": null, 
+    "port": 2024, 
+    "search_regex": null, 
+    "state": "started"
+}
+2019-08-10 18:09:09,351 p=26684 u=ansible |  TASK [Checking the Mgmt IP is pingable or not] *************************************************************************************************************************
+2019-08-10 18:09:09,351 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:26
+2019-08-10 18:09:09,351 p=26684 u=ansible |  Saturday 10 August 2019  18:09:09 +0530 (0:01:00.299)       0:01:02.771 ******* 
+2019-08-10 18:09:09,364 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:09:09,365 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:09:09,373 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440749.36-133575707421538 `" && echo ansible-tmp-1565440749.36-133575707421538="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440749.36-133575707421538 `" ) && sleep 0'
+2019-08-10 18:09:09,502 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-08-10 18:09:09,503 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmpQ3VhCk TO /home/ansible/.ansible/tmp/ansible-tmp-1565440749.36-133575707421538/AnsiballZ_command.py
+2019-08-10 18:09:09,503 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440749.36-133575707421538/ /home/ansible/.ansible/tmp/ansible-tmp-1565440749.36-133575707421538/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:09:09,512 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440749.36-133575707421538/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:09:10,606 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440749.36-133575707421538/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:09:10,619 p=26684 u=ansible |  changed: [localhost] => {
+    "changed": true, 
+    "cmd": "ping -c2 10.34.224.111", 
+    "delta": "0:00:01.010716", 
+    "end": "2019-08-10 18:09:10.595664", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "ping -c2 10.34.224.111", 
+            "_uses_shell": true, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "rc": 0, 
+    "start": "2019-08-10 18:09:09.584948", 
+    "stderr": "", 
+    "stderr_lines": [], 
+    "stdout": "PING 10.34.224.111 (10.34.224.111) 56(84) bytes of data.\n64 bytes from 10.34.224.111: icmp_seq=1 ttl=64 time=3.05 ms\n64 bytes from 10.34.224.111: icmp_seq=2 ttl=64 time=2.51 ms\n\n--- 10.34.224.111 ping statistics ---\n2 packets transmitted, 2 received, 0% packet loss, time 1000ms\nrtt min/avg/max/mdev = 2.512/2.785/3.058/0.273 ms", 
+    "stdout_lines": [
+        "PING 10.34.224.111 (10.34.224.111) 56(84) bytes of data.", 
+        "64 bytes from 10.34.224.111: icmp_seq=1 ttl=64 time=3.05 ms", 
+        "64 bytes from 10.34.224.111: icmp_seq=2 ttl=64 time=2.51 ms", 
+        "", 
+        "--- 10.34.224.111 ping statistics ---", 
+        "2 packets transmitted, 2 received, 0% packet loss, time 1000ms", 
+        "rtt min/avg/max/mdev = 2.512/2.785/3.058/0.273 ms"
+    ]
+}
+2019-08-10 18:09:10,631 p=26684 u=ansible |  TASK [debug] ***********************************************************************************************************************************************************
+2019-08-10 18:09:10,632 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:28
+2019-08-10 18:09:10,632 p=26684 u=ansible |  Saturday 10 August 2019  18:09:10 +0530 (0:00:01.280)       0:01:04.051 ******* 
+2019-08-10 18:09:10,646 p=26684 u=ansible |  ok: [localhost] => {
+    "a.stdout_lines": "VARIABLE IS NOT DEFINED!: 'a' is undefined"
+}
+2019-08-10 18:09:10,658 p=26684 u=ansible |  TASK [To copy the config file to active node] **************************************************************************************************************************
+2019-08-10 18:09:10,658 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:29
+2019-08-10 18:09:10,658 p=26684 u=ansible |  Saturday 10 August 2019  18:09:10 +0530 (0:00:00.025)       0:01:04.077 ******* 
+2019-08-10 18:09:10,667 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:09:10,668 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:09:10,674 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440750.67-275155925378347 `" && echo ansible-tmp-1565440750.67-275155925378347="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440750.67-275155925378347 `" ) && sleep 0'
+2019-08-10 18:09:10,685 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-08-10 18:09:10,686 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmpuSe8tp TO /home/ansible/.ansible/tmp/ansible-tmp-1565440750.67-275155925378347/AnsiballZ_command.py
+2019-08-10 18:09:10,687 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440750.67-275155925378347/ /home/ansible/.ansible/tmp/ansible-tmp-1565440750.67-275155925378347/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:09:10,694 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440750.67-275155925378347/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:09:11,091 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440750.67-275155925378347/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:09:11,104 p=26684 u=ansible |  fatal: [localhost]: FAILED! => {
+    "changed": true, 
+    "cmd": "sh /home/ansible/satyam/timeout1.sh", 
+    "delta": "0:00:00.312765", 
+    "end": "2019-08-10 18:09:11.081873", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "sh /home/ansible/satyam/timeout1.sh", 
+            "_uses_shell": true, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "msg": "non-zero return code", 
+    "rc": 1, 
+    "start": "2019-08-10 18:09:10.769108", 
+    "stderr": "Warning: Permanently added '[10.34.224.111]:2024' (ECDSA) to the list of known hosts.", 
+    "stderr_lines": [
+        "Warning: Permanently added '[10.34.224.111]:2024' (ECDSA) to the list of known hosts."
+    ], 
+    "stdout": "", 
+    "stdout_lines": []
+}
+2019-08-10 18:09:11,105 p=26684 u=ansible |  ...ignoring
+2019-08-10 18:09:11,117 p=26684 u=ansible |  TASK [To check installed software version] *****************************************************************************************************************************
+2019-08-10 18:09:11,117 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:51
+2019-08-10 18:09:11,117 p=26684 u=ansible |  Saturday 10 August 2019  18:09:11 +0530 (0:00:00.459)       0:01:04.536 ******* 
+2019-08-10 18:09:11,129 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:09:11,130 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:09:11,137 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440751.13-32245408578154 `" && echo ansible-tmp-1565440751.13-32245408578154="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440751.13-32245408578154 `" ) && sleep 0'
+2019-08-10 18:09:11,148 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-08-10 18:09:11,149 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmp4qBBPL TO /home/ansible/.ansible/tmp/ansible-tmp-1565440751.13-32245408578154/AnsiballZ_command.py
+2019-08-10 18:09:11,149 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440751.13-32245408578154/ /home/ansible/.ansible/tmp/ansible-tmp-1565440751.13-32245408578154/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:09:11,156 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440751.13-32245408578154/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:09:14,547 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440751.13-32245408578154/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:09:14,562 p=26684 u=ansible |  changed: [localhost] => {
+    "changed": true, 
+    "cmd": "ssh -o UserKnownHostsFile=/dev/null -o  \"stricthostkeychecking no\" -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.111 \"sh /opt/sonus/sbx/scripts/swinfo.sh\"", 
+    "delta": "0:00:03.308792", 
+    "end": "2019-08-10 18:09:14.535257", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "ssh -o UserKnownHostsFile=/dev/null -o  \"stricthostkeychecking no\" -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.111 \"sh /opt/sonus/sbx/scripts/swinfo.sh\"", 
+            "_uses_shell": true, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "rc": 0, 
+    "start": "2019-08-10 18:09:11.226465", 
+    "stderr": "Warning: Permanently added '[10.34.224.111]:2024' (ECDSA) to the list of known hosts.", 
+    "stderr_lines": [
+        "Warning: Permanently added '[10.34.224.111]:2024' (ECDSA) to the list of known hosts."
+    ], 
+    "stdout": "===================================================\nSERVER:          vsbc1\nOS:              V07.00.00-R000\nEMA:             V08.00.00-R000\nSBC:             V08.00.00-R000\nSBC Type:        isbc\nManagement mode: distributed\nBuild Number:    4\n===================================================\nInstalled host role:   active\nCurrent   host role:   active\n===================================================\n\n===================================================\nSERVER:          vsbc1\nOS:              V07.00.00-R000\nEMA:             V08.00.00-R000\nSBC:             V08.00.00-R000\nSBC Type:        isbc\nManagement mode: distributed\nBuild Number:    4\n===================================================\nInstalled host role:   standby\nCurrent   host role:   standby\n===================================================", 
+    "stdout_lines": [
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   active", 
+        "Current   host role:   active", 
+        "===================================================", 
+        "", 
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   standby", 
+        "Current   host role:   standby", 
+        "==================================================="
+    ]
+}
+2019-08-10 18:09:14,576 p=26684 u=ansible |  TASK [debug] ***********************************************************************************************************************************************************
+2019-08-10 18:09:14,576 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:54
+2019-08-10 18:09:14,576 p=26684 u=ansible |  Saturday 10 August 2019  18:09:14 +0530 (0:00:03.459)       0:01:07.996 ******* 
+2019-08-10 18:09:14,595 p=26684 u=ansible |  ok: [localhost] => {
+    "d.stdout_lines": [
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   active", 
+        "Current   host role:   active", 
+        "===================================================", 
+        "", 
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   standby", 
+        "Current   host role:   standby", 
+        "==================================================="
+    ]
+}
+2019-08-10 18:09:14,607 p=26684 u=ansible |  TASK [ISBC] ************************************************************************************************************************************************************
+2019-08-10 18:09:14,607 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:55
+2019-08-10 18:09:14,607 p=26684 u=ansible |  Saturday 10 August 2019  18:09:14 +0530 (0:00:00.031)       0:01:08.027 ******* 
+2019-08-10 18:09:14,618 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:09:14,618 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:09:14,625 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457 `" && echo ansible-tmp-1565440754.62-275650351907457="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457 `" ) && sleep 0'
+2019-08-10 18:09:14,637 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/openstack/os_stack.py
+2019-08-10 18:09:14,638 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmplb_Oui TO /home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/AnsiballZ_os_stack.py
+2019-08-10 18:09:14,639 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/ /home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:09:14,647 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:09:15,059 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:09:15,072 p=26684 u=ansible |  The full traceback is:
+Traceback (most recent call last):
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/AnsiballZ_os_stack.py", line 114, in <module>
+    _ansiballz_main()
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/AnsiballZ_os_stack.py", line 106, in _ansiballz_main
+    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/AnsiballZ_os_stack.py", line 49, in invoke_module
+    imp.load_module('__main__', mod, module, MOD_DESC)
+  File "/tmp/ansible_os_stack_payload_01MaoS/__main__.py", line 276, in <module>
+  File "/tmp/ansible_os_stack_payload_01MaoS/__main__.py", line 238, in main
+  File "/tmp/ansible_os_stack_payload_01MaoS/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py", line 154, in openstack_cloud_from_module
+  File "/usr/lib/python2.7/site-packages/openstack/__init__.py", line 59, in connect
+    options=options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/__init__.py", line 36, in get_cloud_region
+    return config.get_one(options=parsed_options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/loader.py", line 1077, in get_one
+    auth_plugin = loader.load_from_options(**config['auth'])
+  File "/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py", line 162, in load_from_options
+    raise exceptions.MissingRequiredOptions(missing_required)
+keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url
+
+2019-08-10 18:09:15,073 p=26684 u=ansible |  fatal: [localhost]: FAILED! => {
+    "changed": false, 
+    "module_stderr": "Traceback (most recent call last):\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/AnsiballZ_os_stack.py\", line 114, in <module>\n    _ansiballz_main()\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/AnsiballZ_os_stack.py\", line 106, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565440754.62-275650351907457/AnsiballZ_os_stack.py\", line 49, in invoke_module\n    imp.load_module('__main__', mod, module, MOD_DESC)\n  File \"/tmp/ansible_os_stack_payload_01MaoS/__main__.py\", line 276, in <module>\n  File \"/tmp/ansible_os_stack_payload_01MaoS/__main__.py\", line 238, in main\n  File \"/tmp/ansible_os_stack_payload_01MaoS/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py\", line 154, in openstack_cloud_from_module\n  File \"/usr/lib/python2.7/site-packages/openstack/__init__.py\", line 59, in connect\n    options=options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/__init__.py\", line 36, in get_cloud_region\n    return config.get_one(options=parsed_options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/loader.py\", line 1077, in get_one\n    auth_plugin = loader.load_from_options(**config['auth'])\n  File \"/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py\", line 162, in load_from_options\n    raise exceptions.MissingRequiredOptions(missing_required)\nkeystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url\n", 
+    "module_stdout": "", 
+    "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", 
+    "rc": 1
+}
+2019-08-10 18:09:15,073 p=26684 u=ansible |  ...ignoring
+2019-08-10 18:09:15,085 p=26684 u=ansible |  TASK [Wait until the standby instance pings] ***************************************************************************************************************************
+2019-08-10 18:09:15,085 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:67
+2019-08-10 18:09:15,085 p=26684 u=ansible |  Saturday 10 August 2019  18:09:15 +0530 (0:00:00.477)       0:01:08.504 ******* 
+2019-08-10 18:09:15,095 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:09:15,095 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:09:15,102 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440755.09-161308665586652 `" && echo ansible-tmp-1565440755.09-161308665586652="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440755.09-161308665586652 `" ) && sleep 0'
+2019-08-10 18:09:15,112 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/utilities/logic/wait_for.py
+2019-08-10 18:09:15,113 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmpovgKSN TO /home/ansible/.ansible/tmp/ansible-tmp-1565440755.09-161308665586652/AnsiballZ_wait_for.py
+2019-08-10 18:09:15,113 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440755.09-161308665586652/ /home/ansible/.ansible/tmp/ansible-tmp-1565440755.09-161308665586652/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:09:15,120 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440755.09-161308665586652/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:10:15,210 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440755.09-161308665586652/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:10:15,228 p=26684 u=ansible |  ok: [localhost] => {
+    "changed": false, 
+    "elapsed": 60, 
+    "invocation": {
+        "module_args": {
+            "active_connection_states": [
+                "ESTABLISHED", 
+                "FIN_WAIT1", 
+                "FIN_WAIT2", 
+                "SYN_RECV", 
+                "SYN_SENT", 
+                "TIME_WAIT"
+            ], 
+            "connect_timeout": 5, 
+            "delay": 60, 
+            "exclude_hosts": null, 
+            "host": "10.34.224.112", 
+            "msg": null, 
+            "path": null, 
+            "port": 2024, 
+            "search_regex": null, 
+            "sleep": 1, 
+            "state": "started", 
+            "timeout": 300
+        }
+    }, 
+    "match_groupdict": {}, 
+    "match_groups": [], 
+    "path": null, 
+    "port": 2024, 
+    "search_regex": null, 
+    "state": "started"
+}
+2019-08-10 18:10:15,242 p=26684 u=ansible |  TASK [Checking the Mgmt IP is pingable or not] *************************************************************************************************************************
+2019-08-10 18:10:15,242 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:75
+2019-08-10 18:10:15,242 p=26684 u=ansible |  Saturday 10 August 2019  18:10:15 +0530 (0:01:00.157)       0:02:08.662 ******* 
+2019-08-10 18:10:15,258 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:10:15,259 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:10:15,267 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440815.26-13070358884275 `" && echo ansible-tmp-1565440815.26-13070358884275="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440815.26-13070358884275 `" ) && sleep 0'
+2019-08-10 18:10:15,279 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-08-10 18:10:15,279 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmpA6ADWf TO /home/ansible/.ansible/tmp/ansible-tmp-1565440815.26-13070358884275/AnsiballZ_command.py
+2019-08-10 18:10:15,280 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440815.26-13070358884275/ /home/ansible/.ansible/tmp/ansible-tmp-1565440815.26-13070358884275/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:10:15,287 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440815.26-13070358884275/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:10:19,387 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440815.26-13070358884275/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:10:19,401 p=26684 u=ansible |  changed: [localhost] => {
+    "changed": true, 
+    "cmd": "ping -c5 10.34.224.112", 
+    "delta": "0:00:04.014800", 
+    "end": "2019-08-10 18:10:19.375315", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "ping -c5 10.34.224.112", 
+            "_uses_shell": true, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "rc": 0, 
+    "start": "2019-08-10 18:10:15.360515", 
+    "stderr": "", 
+    "stderr_lines": [], 
+    "stdout": "PING 10.34.224.112 (10.34.224.112) 56(84) bytes of data.\n64 bytes from 10.34.224.112: icmp_seq=1 ttl=64 time=1.00 ms\n64 bytes from 10.34.224.112: icmp_seq=2 ttl=64 time=8.04 ms\n64 bytes from 10.34.224.112: icmp_seq=3 ttl=64 time=6.72 ms\n64 bytes from 10.34.224.112: icmp_seq=4 ttl=64 time=4.86 ms\n64 bytes from 10.34.224.112: icmp_seq=5 ttl=64 time=2.81 ms\n\n--- 10.34.224.112 ping statistics ---\n5 packets transmitted, 5 received, 0% packet loss, time 4006ms\nrtt min/avg/max/mdev = 1.002/4.690/8.048/2.552 ms", 
+    "stdout_lines": [
+        "PING 10.34.224.112 (10.34.224.112) 56(84) bytes of data.", 
+        "64 bytes from 10.34.224.112: icmp_seq=1 ttl=64 time=1.00 ms", 
+        "64 bytes from 10.34.224.112: icmp_seq=2 ttl=64 time=8.04 ms", 
+        "64 bytes from 10.34.224.112: icmp_seq=3 ttl=64 time=6.72 ms", 
+        "64 bytes from 10.34.224.112: icmp_seq=4 ttl=64 time=4.86 ms", 
+        "64 bytes from 10.34.224.112: icmp_seq=5 ttl=64 time=2.81 ms", 
+        "", 
+        "--- 10.34.224.112 ping statistics ---", 
+        "5 packets transmitted, 5 received, 0% packet loss, time 4006ms", 
+        "rtt min/avg/max/mdev = 1.002/4.690/8.048/2.552 ms"
+    ]
+}
+2019-08-10 18:10:19,415 p=26684 u=ansible |  TASK [debug] ***********************************************************************************************************************************************************
+2019-08-10 18:10:19,416 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:78
+2019-08-10 18:10:19,416 p=26684 u=ansible |  Saturday 10 August 2019  18:10:19 +0530 (0:00:04.173)       0:02:12.835 ******* 
+2019-08-10 18:10:19,433 p=26684 u=ansible |  ok: [localhost] => {
+    "a.stdout_lines": [
+        "PING 10.34.224.112 (10.34.224.112) 56(84) bytes of data.", 
+        "64 bytes from 10.34.224.112: icmp_seq=1 ttl=64 time=1.00 ms", 
+        "64 bytes from 10.34.224.112: icmp_seq=2 ttl=64 time=8.04 ms", 
+        "64 bytes from 10.34.224.112: icmp_seq=3 ttl=64 time=6.72 ms", 
+        "64 bytes from 10.34.224.112: icmp_seq=4 ttl=64 time=4.86 ms", 
+        "64 bytes from 10.34.224.112: icmp_seq=5 ttl=64 time=2.81 ms", 
+        "", 
+        "--- 10.34.224.112 ping statistics ---", 
+        "5 packets transmitted, 5 received, 0% packet loss, time 4006ms", 
+        "rtt min/avg/max/mdev = 1.002/4.690/8.048/2.552 ms"
+    ]
+}
+2019-08-10 18:10:19,444 p=26684 u=ansible |  TASK [To copy the config file to standby  node] ************************************************************************************************************************
+2019-08-10 18:10:19,444 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:84
+2019-08-10 18:10:19,445 p=26684 u=ansible |  Saturday 10 August 2019  18:10:19 +0530 (0:00:00.028)       0:02:12.864 ******* 
+2019-08-10 18:10:19,455 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:10:19,455 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:10:19,461 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440819.45-103452024301874 `" && echo ansible-tmp-1565440819.45-103452024301874="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440819.45-103452024301874 `" ) && sleep 0'
+2019-08-10 18:10:19,472 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-08-10 18:10:19,473 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmprG2qxS TO /home/ansible/.ansible/tmp/ansible-tmp-1565440819.45-103452024301874/AnsiballZ_command.py
+2019-08-10 18:10:19,473 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440819.45-103452024301874/ /home/ansible/.ansible/tmp/ansible-tmp-1565440819.45-103452024301874/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:10:19,480 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440819.45-103452024301874/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:10:19,855 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440819.45-103452024301874/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:10:19,867 p=26684 u=ansible |  fatal: [localhost]: FAILED! => {
+    "changed": true, 
+    "cmd": "sh /home/ansible/satyam/timeout2.sh", 
+    "delta": "0:00:00.292645", 
+    "end": "2019-08-10 18:10:19.845428", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "sh /home/ansible/satyam/timeout2.sh", 
+            "_uses_shell": true, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "msg": "non-zero return code", 
+    "rc": 1, 
+    "start": "2019-08-10 18:10:19.552783", 
+    "stderr": "Warning: Permanently added '[10.34.224.112]:2024' (ECDSA) to the list of known hosts.", 
+    "stderr_lines": [
+        "Warning: Permanently added '[10.34.224.112]:2024' (ECDSA) to the list of known hosts."
+    ], 
+    "stdout": "", 
+    "stdout_lines": []
+}
+2019-08-10 18:10:19,867 p=26684 u=ansible |  ...ignoring
+2019-08-10 18:10:19,879 p=26684 u=ansible |  TASK [To check installed software version] *****************************************************************************************************************************
+2019-08-10 18:10:19,879 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:89
+2019-08-10 18:10:19,880 p=26684 u=ansible |  Saturday 10 August 2019  18:10:19 +0530 (0:00:00.435)       0:02:13.299 ******* 
+2019-08-10 18:10:19,893 p=26684 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:10:19,893 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:10:19,900 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440819.89-60205265595099 `" && echo ansible-tmp-1565440819.89-60205265595099="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565440819.89-60205265595099 `" ) && sleep 0'
+2019-08-10 18:10:19,911 p=26684 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-08-10 18:10:19,912 p=26684 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-26684cBvqGp/tmpmwjmJs TO /home/ansible/.ansible/tmp/ansible-tmp-1565440819.89-60205265595099/AnsiballZ_command.py
+2019-08-10 18:10:19,912 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565440819.89-60205265595099/ /home/ansible/.ansible/tmp/ansible-tmp-1565440819.89-60205265595099/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:10:19,919 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565440819.89-60205265595099/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:10:23,305 p=26684 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565440819.89-60205265595099/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:10:23,321 p=26684 u=ansible |  changed: [localhost] => {
+    "changed": true, 
+    "cmd": "ssh -o  \"stricthostkeychecking no\" -o UserKnownHostsFile=/dev/null -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.112 \"sh /opt/sonus/sbx/scripts/swinfo.sh\"", 
+    "delta": "0:00:03.299271", 
+    "end": "2019-08-10 18:10:23.290672", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "ssh -o  \"stricthostkeychecking no\" -o UserKnownHostsFile=/dev/null -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.112 \"sh /opt/sonus/sbx/scripts/swinfo.sh\"", 
+            "_uses_shell": true, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "rc": 0, 
+    "start": "2019-08-10 18:10:19.991401", 
+    "stderr": "Warning: Permanently added '[10.34.224.112]:2024' (ECDSA) to the list of known hosts.", 
+    "stderr_lines": [
+        "Warning: Permanently added '[10.34.224.112]:2024' (ECDSA) to the list of known hosts."
+    ], 
+    "stdout": "===================================================\nSERVER:          vsbc1\nOS:              V07.00.00-R000\nEMA:             V08.00.00-R000\nSBC:             V08.00.00-R000\nSBC Type:        isbc\nManagement mode: distributed\nBuild Number:    4\n===================================================\nInstalled host role:   standby\nCurrent   host role:   standby\n===================================================\n\n===================================================\nSERVER:          vsbc1\nOS:              V07.00.00-R000\nEMA:             V08.00.00-R000\nSBC:             V08.00.00-R000\nSBC Type:        isbc\nManagement mode: distributed\nBuild Number:    4\n===================================================\nInstalled host role:   active\nCurrent   host role:   active\n===================================================", 
+    "stdout_lines": [
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   standby", 
+        "Current   host role:   standby", 
+        "===================================================", 
+        "", 
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   active", 
+        "Current   host role:   active", 
+        "==================================================="
+    ]
+}
+2019-08-10 18:10:23,335 p=26684 u=ansible |  TASK [debug] ***********************************************************************************************************************************************************
+2019-08-10 18:10:23,335 p=26684 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:92
+2019-08-10 18:10:23,335 p=26684 u=ansible |  Saturday 10 August 2019  18:10:23 +0530 (0:00:03.455)       0:02:16.754 ******* 
+2019-08-10 18:10:23,353 p=26684 u=ansible |  ok: [localhost] => {
+    "c.stdout_lines": [
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   standby", 
+        "Current   host role:   standby", 
+        "===================================================", 
+        "", 
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   active", 
+        "Current   host role:   active", 
+        "==================================================="
+    ]
+}
+2019-08-10 18:10:23,354 p=26684 u=ansible |  META: ran handlers
+2019-08-10 18:10:23,355 p=26684 u=ansible |  META: ran handlers
+2019-08-10 18:10:23,356 p=26684 u=ansible |  PLAY RECAP *************************************************************************************************************************************************************
+2019-08-10 18:10:23,356 p=26684 u=ansible |  localhost                  : ok=16   changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=4   
+2019-08-10 18:10:23,356 p=26684 u=ansible |  Saturday 10 August 2019  18:10:23 +0530 (0:00:00.021)       0:02:16.776 ******* 
+2019-08-10 18:10:23,356 p=26684 u=ansible |  =============================================================================== 
+2019-08-10 18:10:23,356 p=26684 u=ansible |  Wait until the active instance pings --------------------------------------------------------------------------------------------------------------------------- 60.30s
+/home/ansible/satyam/ISBC_license_complete7.yml:21 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,356 p=26684 u=ansible |  Wait until the standby instance pings -------------------------------------------------------------------------------------------------------------------------- 60.16s
+/home/ansible/satyam/ISBC_license_complete7.yml:67 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  Checking the Mgmt IP is pingable or not ------------------------------------------------------------------------------------------------------------------------- 4.17s
+/home/ansible/satyam/ISBC_license_complete7.yml:75 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  To check installed software version ----------------------------------------------------------------------------------------------------------------------------- 3.46s
+/home/ansible/satyam/ISBC_license_complete7.yml:51 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  To check installed software version ----------------------------------------------------------------------------------------------------------------------------- 3.46s
+/home/ansible/satyam/ISBC_license_complete7.yml:89 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  Gathering Facts ------------------------------------------------------------------------------------------------------------------------------------------------- 1.75s
+/home/ansible/satyam/ISBC_license_complete7.yml:2 ---------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  Checking the Mgmt IP is pingable or not ------------------------------------------------------------------------------------------------------------------------- 1.28s
+/home/ansible/satyam/ISBC_license_complete7.yml:26 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  ISBC ------------------------------------------------------------------------------------------------------------------------------------------------------------ 0.60s
+/home/ansible/satyam/ISBC_license_complete7.yml:10 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  ISBC ------------------------------------------------------------------------------------------------------------------------------------------------------------ 0.48s
+/home/ansible/satyam/ISBC_license_complete7.yml:55 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  To copy the config file to active node -------------------------------------------------------------------------------------------------------------------------- 0.46s
+/home/ansible/satyam/ISBC_license_complete7.yml:29 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  To copy the config file to standby  node ------------------------------------------------------------------------------------------------------------------------ 0.44s
+/home/ansible/satyam/ISBC_license_complete7.yml:84 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  Ansible start date ---------------------------------------------------------------------------------------------------------------------------------------------- 0.06s
+/home/ansible/satyam/ISBC_license_complete7.yml:7 ---------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  debug ----------------------------------------------------------------------------------------------------------------------------------------------------------- 0.03s
+/home/ansible/satyam/ISBC_license_complete7.yml:54 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  debug ----------------------------------------------------------------------------------------------------------------------------------------------------------- 0.03s
+/home/ansible/satyam/ISBC_license_complete7.yml:78 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  debug ----------------------------------------------------------------------------------------------------------------------------------------------------------- 0.03s
+/home/ansible/satyam/ISBC_license_complete7.yml:28 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  debug ----------------------------------------------------------------------------------------------------------------------------------------------------------- 0.02s
+/home/ansible/satyam/ISBC_license_complete7.yml:92 --------------------------------------------------------------------------------------------------------------------
+2019-08-10 18:10:23,357 p=26684 u=ansible |  Playbook run took 0 days, 0 hours, 2 minutes, 16 seconds
+2019-08-10 18:14:52,657 p=27299 u=ansible |  ansible-playbook 2.8.2
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/ansible/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-08-10 18:14:52,657 p=27299 u=ansible |  Using /etc/ansible/ansible.cfg as config file
+2019-08-10 18:14:52,664 p=27299 u=ansible |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:14:52,664 p=27299 u=ansible |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:14:52,664 p=27299 u=ansible |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:14:52,667 p=27299 u=ansible |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-08-10 18:14:53,070 p=27299 u=ansible |  PLAYBOOK: ISBC_license_complete7.yml ***********************************************************************************************************************************
+2019-08-10 18:14:53,071 p=27299 u=ansible |  1 plays in ISBC_license_complete7.yml
+2019-08-10 18:14:53,102 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2019-08-10 18:14:53,107 p=27299 u=ansible |  PLAY [create stack] ****************************************************************************************************************************************************
+2019-08-10 18:14:53,114 p=27299 u=ansible |  TASK [Gathering Facts] *************************************************************************************************************************************************
+2019-08-10 18:14:53,114 p=27299 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:2
+2019-08-10 18:14:53,115 p=27299 u=ansible |  Saturday 10 August 2019  18:14:53 +0530 (0:00:00.055)       0:00:00.055 ******* 
+2019-08-10 18:14:53,129 p=27299 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:14:53,129 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:14:53,137 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441093.13-74445205180856 `" && echo ansible-tmp-1565441093.13-74445205180856="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441093.13-74445205180856 `" ) && sleep 0'
+2019-08-10 18:14:53,445 p=27299 u=ansible |  <localhost> Attempting python interpreter discovery
+2019-08-10 18:14:53,446 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c 'echo PLATFORM; uname; echo FOUND; command -v '"'"'/usr/bin/python'"'"'; command -v '"'"'python3.7'"'"'; command -v '"'"'python3.6'"'"'; command -v '"'"'python3.5'"'"'; command -v '"'"'python2.7'"'"'; command -v '"'"'python2.6'"'"'; command -v '"'"'/usr/libexec/platform-python'"'"'; command -v '"'"'/usr/bin/python3'"'"'; command -v '"'"'python'"'"'; echo ENDFOUND && sleep 0'
+2019-08-10 18:14:53,455 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python && sleep 0'
+2019-08-10 18:14:53,484 p=27299 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-08-10 18:14:53,485 p=27299 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27299M2i4Ao/tmpFWc27N TO /home/ansible/.ansible/tmp/ansible-tmp-1565441093.13-74445205180856/AnsiballZ_setup.py
+2019-08-10 18:14:53,485 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441093.13-74445205180856/ /home/ansible/.ansible/tmp/ansible-tmp-1565441093.13-74445205180856/AnsiballZ_setup.py && sleep 0'
+2019-08-10 18:14:53,492 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441093.13-74445205180856/AnsiballZ_setup.py && sleep 0'
+2019-08-10 18:14:53,803 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441093.13-74445205180856/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:14:53,832 p=27299 u=ansible |  ok: [localhost]
+2019-08-10 18:14:53,837 p=27299 u=ansible |  META: ran handlers
+2019-08-10 18:14:53,849 p=27299 u=ansible |  TASK [Ansible start date] **********************************************************************************************************************************************
+2019-08-10 18:14:53,849 p=27299 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:7
+2019-08-10 18:14:53,849 p=27299 u=ansible |  Saturday 10 August 2019  18:14:53 +0530 (0:00:00.734)       0:00:00.789 ******* 
+2019-08-10 18:14:53,902 p=27299 u=ansible |  ok: [localhost] => {
+    "ansible_date_time.date": "2019-08-10"
+}
+2019-08-10 18:14:53,914 p=27299 u=ansible |  TASK [ISBC] ************************************************************************************************************************************************************
+2019-08-10 18:14:53,914 p=27299 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:10
+2019-08-10 18:14:53,915 p=27299 u=ansible |  Saturday 10 August 2019  18:14:53 +0530 (0:00:00.065)       0:00:00.855 ******* 
+2019-08-10 18:14:53,963 p=27299 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:14:53,963 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:14:53,971 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360 `" && echo ansible-tmp-1565441093.96-221604327161360="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360 `" ) && sleep 0'
+2019-08-10 18:14:54,108 p=27299 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/openstack/os_stack.py
+2019-08-10 18:14:54,109 p=27299 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27299M2i4Ao/tmpLKsim3 TO /home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/AnsiballZ_os_stack.py
+2019-08-10 18:14:54,109 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/ /home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:14:54,118 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:14:54,487 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:14:54,528 p=27299 u=ansible |  The full traceback is:
+Traceback (most recent call last):
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/AnsiballZ_os_stack.py", line 114, in <module>
+    _ansiballz_main()
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/AnsiballZ_os_stack.py", line 106, in _ansiballz_main
+    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/AnsiballZ_os_stack.py", line 49, in invoke_module
+    imp.load_module('__main__', mod, module, MOD_DESC)
+  File "/tmp/ansible_os_stack_payload_V5OAsC/__main__.py", line 276, in <module>
+  File "/tmp/ansible_os_stack_payload_V5OAsC/__main__.py", line 238, in main
+  File "/tmp/ansible_os_stack_payload_V5OAsC/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py", line 154, in openstack_cloud_from_module
+  File "/usr/lib/python2.7/site-packages/openstack/__init__.py", line 59, in connect
+    options=options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/__init__.py", line 36, in get_cloud_region
+    return config.get_one(options=parsed_options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/loader.py", line 1077, in get_one
+    auth_plugin = loader.load_from_options(**config['auth'])
+  File "/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py", line 162, in load_from_options
+    raise exceptions.MissingRequiredOptions(missing_required)
+keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url
+
+2019-08-10 18:14:54,529 p=27299 u=ansible |  fatal: [localhost]: FAILED! => {
+    "changed": false, 
+    "module_stderr": "Traceback (most recent call last):\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/AnsiballZ_os_stack.py\", line 114, in <module>\n    _ansiballz_main()\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/AnsiballZ_os_stack.py\", line 106, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441093.96-221604327161360/AnsiballZ_os_stack.py\", line 49, in invoke_module\n    imp.load_module('__main__', mod, module, MOD_DESC)\n  File \"/tmp/ansible_os_stack_payload_V5OAsC/__main__.py\", line 276, in <module>\n  File \"/tmp/ansible_os_stack_payload_V5OAsC/__main__.py\", line 238, in main\n  File \"/tmp/ansible_os_stack_payload_V5OAsC/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py\", line 154, in openstack_cloud_from_module\n  File \"/usr/lib/python2.7/site-packages/openstack/__init__.py\", line 59, in connect\n    options=options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/__init__.py\", line 36, in get_cloud_region\n    return config.get_one(options=parsed_options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/loader.py\", line 1077, in get_one\n    auth_plugin = loader.load_from_options(**config['auth'])\n  File \"/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py\", line 162, in load_from_options\n    raise exceptions.MissingRequiredOptions(missing_required)\nkeystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url\n", 
+    "module_stdout": "", 
+    "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", 
+    "rc": 1
+}
+2019-08-10 18:14:54,529 p=27299 u=ansible |  ...ignoring
+2019-08-10 18:14:54,540 p=27299 u=ansible |  TASK [Wait until the active instance pings] ****************************************************************************************************************************
+2019-08-10 18:14:54,540 p=27299 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:21
+2019-08-10 18:14:54,540 p=27299 u=ansible |  Saturday 10 August 2019  18:14:54 +0530 (0:00:00.625)       0:00:01.481 ******* 
+2019-08-10 18:14:54,550 p=27299 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:14:54,551 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:14:54,559 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441094.55-143833478522496 `" && echo ansible-tmp-1565441094.55-143833478522496="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441094.55-143833478522496 `" ) && sleep 0'
+2019-08-10 18:14:54,687 p=27299 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/utilities/logic/wait_for.py
+2019-08-10 18:14:54,688 p=27299 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27299M2i4Ao/tmpWDiF6O TO /home/ansible/.ansible/tmp/ansible-tmp-1565441094.55-143833478522496/AnsiballZ_wait_for.py
+2019-08-10 18:14:54,688 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441094.55-143833478522496/ /home/ansible/.ansible/tmp/ansible-tmp-1565441094.55-143833478522496/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:14:54,696 p=27299 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441094.55-143833478522496/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:15:22,605 p=27299 u=ansible |   [ERROR]: User interrupted execution
+
+2019-08-10 18:17:41,016 p=27558 u=ansible |  ansible-playbook 2.8.2
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/ansible/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-08-10 18:17:41,016 p=27558 u=ansible |  Using /etc/ansible/ansible.cfg as config file
+2019-08-10 18:17:41,023 p=27558 u=ansible |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:17:41,023 p=27558 u=ansible |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:17:41,023 p=27558 u=ansible |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:17:41,026 p=27558 u=ansible |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-08-10 18:17:41,432 p=27558 u=ansible |  PLAYBOOK: ISBC_license_complete7.yml ***********************************************************************************************************************************
+2019-08-10 18:17:41,432 p=27558 u=ansible |  1 plays in ISBC_license_complete7.yml
+2019-08-10 18:17:41,463 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2019-08-10 18:17:41,468 p=27558 u=ansible |  PLAY [create stack] ****************************************************************************************************************************************************
+2019-08-10 18:17:41,474 p=27558 u=ansible |  TASK [Gathering Facts] *************************************************************************************************************************************************
+2019-08-10 18:17:41,474 p=27558 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:2
+2019-08-10 18:17:41,474 p=27558 u=ansible |  Saturday 10 August 2019  18:17:41 +0530 (0:00:00.054)       0:00:00.054 ******* 
+2019-08-10 18:17:41,485 p=27558 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:17:41,485 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:17:41,494 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441261.49-191747521506046 `" && echo ansible-tmp-1565441261.49-191747521506046="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441261.49-191747521506046 `" ) && sleep 0'
+2019-08-10 18:17:41,791 p=27558 u=ansible |  <localhost> Attempting python interpreter discovery
+2019-08-10 18:17:41,791 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c 'echo PLATFORM; uname; echo FOUND; command -v '"'"'/usr/bin/python'"'"'; command -v '"'"'python3.7'"'"'; command -v '"'"'python3.6'"'"'; command -v '"'"'python3.5'"'"'; command -v '"'"'python2.7'"'"'; command -v '"'"'python2.6'"'"'; command -v '"'"'/usr/libexec/platform-python'"'"'; command -v '"'"'/usr/bin/python3'"'"'; command -v '"'"'python'"'"'; echo ENDFOUND && sleep 0'
+2019-08-10 18:17:41,802 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python && sleep 0'
+2019-08-10 18:17:41,828 p=27558 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-08-10 18:17:41,828 p=27558 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27558c3M2ok/tmpbBSzqj TO /home/ansible/.ansible/tmp/ansible-tmp-1565441261.49-191747521506046/AnsiballZ_setup.py
+2019-08-10 18:17:41,829 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441261.49-191747521506046/ /home/ansible/.ansible/tmp/ansible-tmp-1565441261.49-191747521506046/AnsiballZ_setup.py && sleep 0'
+2019-08-10 18:17:41,836 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441261.49-191747521506046/AnsiballZ_setup.py && sleep 0'
+2019-08-10 18:17:42,147 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441261.49-191747521506046/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:17:42,175 p=27558 u=ansible |  ok: [localhost]
+2019-08-10 18:17:42,180 p=27558 u=ansible |  META: ran handlers
+2019-08-10 18:17:42,192 p=27558 u=ansible |  TASK [Ansible start date] **********************************************************************************************************************************************
+2019-08-10 18:17:42,192 p=27558 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:7
+2019-08-10 18:17:42,192 p=27558 u=ansible |  Saturday 10 August 2019  18:17:42 +0530 (0:00:00.718)       0:00:00.772 ******* 
+2019-08-10 18:17:42,246 p=27558 u=ansible |  ok: [localhost] => {
+    "ansible_date_time.date": "2019-08-10"
+}
+2019-08-10 18:17:42,258 p=27558 u=ansible |  TASK [ISBC] ************************************************************************************************************************************************************
+2019-08-10 18:17:42,258 p=27558 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:10
+2019-08-10 18:17:42,258 p=27558 u=ansible |  Saturday 10 August 2019  18:17:42 +0530 (0:00:00.065)       0:00:00.838 ******* 
+2019-08-10 18:17:42,305 p=27558 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:17:42,305 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:17:42,313 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812 `" && echo ansible-tmp-1565441262.31-110025280080812="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812 `" ) && sleep 0'
+2019-08-10 18:17:42,437 p=27558 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/openstack/os_stack.py
+2019-08-10 18:17:42,437 p=27558 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27558c3M2ok/tmpyXTIfc TO /home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/AnsiballZ_os_stack.py
+2019-08-10 18:17:42,438 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/ /home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:17:42,445 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:17:42,806 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:17:42,849 p=27558 u=ansible |  The full traceback is:
+Traceback (most recent call last):
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/AnsiballZ_os_stack.py", line 114, in <module>
+    _ansiballz_main()
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/AnsiballZ_os_stack.py", line 106, in _ansiballz_main
+    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/AnsiballZ_os_stack.py", line 49, in invoke_module
+    imp.load_module('__main__', mod, module, MOD_DESC)
+  File "/tmp/ansible_os_stack_payload_eioP1m/__main__.py", line 276, in <module>
+  File "/tmp/ansible_os_stack_payload_eioP1m/__main__.py", line 238, in main
+  File "/tmp/ansible_os_stack_payload_eioP1m/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py", line 154, in openstack_cloud_from_module
+  File "/usr/lib/python2.7/site-packages/openstack/__init__.py", line 59, in connect
+    options=options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/__init__.py", line 36, in get_cloud_region
+    return config.get_one(options=parsed_options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/loader.py", line 1077, in get_one
+    auth_plugin = loader.load_from_options(**config['auth'])
+  File "/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py", line 162, in load_from_options
+    raise exceptions.MissingRequiredOptions(missing_required)
+keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url
+
+2019-08-10 18:17:42,849 p=27558 u=ansible |  fatal: [localhost]: FAILED! => {
+    "changed": false, 
+    "module_stderr": "Traceback (most recent call last):\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/AnsiballZ_os_stack.py\", line 114, in <module>\n    _ansiballz_main()\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/AnsiballZ_os_stack.py\", line 106, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441262.31-110025280080812/AnsiballZ_os_stack.py\", line 49, in invoke_module\n    imp.load_module('__main__', mod, module, MOD_DESC)\n  File \"/tmp/ansible_os_stack_payload_eioP1m/__main__.py\", line 276, in <module>\n  File \"/tmp/ansible_os_stack_payload_eioP1m/__main__.py\", line 238, in main\n  File \"/tmp/ansible_os_stack_payload_eioP1m/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py\", line 154, in openstack_cloud_from_module\n  File \"/usr/lib/python2.7/site-packages/openstack/__init__.py\", line 59, in connect\n    options=options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/__init__.py\", line 36, in get_cloud_region\n    return config.get_one(options=parsed_options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/loader.py\", line 1077, in get_one\n    auth_plugin = loader.load_from_options(**config['auth'])\n  File \"/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py\", line 162, in load_from_options\n    raise exceptions.MissingRequiredOptions(missing_required)\nkeystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url\n", 
+    "module_stdout": "", 
+    "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", 
+    "rc": 1
+}
+2019-08-10 18:17:42,850 p=27558 u=ansible |  ...ignoring
+2019-08-10 18:17:42,861 p=27558 u=ansible |  TASK [Wait until the active instance pings] ****************************************************************************************************************************
+2019-08-10 18:17:42,861 p=27558 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:21
+2019-08-10 18:17:42,861 p=27558 u=ansible |  Saturday 10 August 2019  18:17:42 +0530 (0:00:00.602)       0:00:01.441 ******* 
+2019-08-10 18:17:42,871 p=27558 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:17:42,871 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:17:42,879 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441262.87-53106120967164 `" && echo ansible-tmp-1565441262.87-53106120967164="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441262.87-53106120967164 `" ) && sleep 0'
+2019-08-10 18:17:43,009 p=27558 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/utilities/logic/wait_for.py
+2019-08-10 18:17:43,010 p=27558 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27558c3M2ok/tmpeMDawl TO /home/ansible/.ansible/tmp/ansible-tmp-1565441262.87-53106120967164/AnsiballZ_wait_for.py
+2019-08-10 18:17:43,010 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441262.87-53106120967164/ /home/ansible/.ansible/tmp/ansible-tmp-1565441262.87-53106120967164/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:17:43,018 p=27558 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441262.87-53106120967164/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:18:17,675 p=27558 u=ansible |   [ERROR]: User interrupted execution
+
+2019-08-10 18:18:19,421 p=27696 u=ansible |  ansible-playbook 2.8.2
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/ansible/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-08-10 18:18:19,422 p=27696 u=ansible |  Using /etc/ansible/ansible.cfg as config file
+2019-08-10 18:18:19,428 p=27696 u=ansible |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:18:19,428 p=27696 u=ansible |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:18:19,428 p=27696 u=ansible |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:18:19,432 p=27696 u=ansible |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-08-10 18:18:19,840 p=27696 u=ansible |  PLAYBOOK: ISBC_license_complete7.yml ***********************************************************************************************************************************
+2019-08-10 18:18:19,840 p=27696 u=ansible |  1 plays in ISBC_license_complete7.yml
+2019-08-10 18:18:19,872 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2019-08-10 18:18:19,877 p=27696 u=ansible |  PLAY [create stack] ****************************************************************************************************************************************************
+2019-08-10 18:18:19,884 p=27696 u=ansible |  TASK [Gathering Facts] *************************************************************************************************************************************************
+2019-08-10 18:18:19,884 p=27696 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:2
+2019-08-10 18:18:19,884 p=27696 u=ansible |  Saturday 10 August 2019  18:18:19 +0530 (0:00:00.056)       0:00:00.056 ******* 
+2019-08-10 18:18:19,901 p=27696 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:18:19,902 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:18:19,910 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441299.9-53318021841629 `" && echo ansible-tmp-1565441299.9-53318021841629="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441299.9-53318021841629 `" ) && sleep 0'
+2019-08-10 18:18:20,228 p=27696 u=ansible |  <localhost> Attempting python interpreter discovery
+2019-08-10 18:18:20,228 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c 'echo PLATFORM; uname; echo FOUND; command -v '"'"'/usr/bin/python'"'"'; command -v '"'"'python3.7'"'"'; command -v '"'"'python3.6'"'"'; command -v '"'"'python3.5'"'"'; command -v '"'"'python2.7'"'"'; command -v '"'"'python2.6'"'"'; command -v '"'"'/usr/libexec/platform-python'"'"'; command -v '"'"'/usr/bin/python3'"'"'; command -v '"'"'python'"'"'; echo ENDFOUND && sleep 0'
+2019-08-10 18:18:20,237 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python && sleep 0'
+2019-08-10 18:18:20,264 p=27696 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-08-10 18:18:20,264 p=27696 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27696ak1cbE/tmpgrBP8w TO /home/ansible/.ansible/tmp/ansible-tmp-1565441299.9-53318021841629/AnsiballZ_setup.py
+2019-08-10 18:18:20,265 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441299.9-53318021841629/ /home/ansible/.ansible/tmp/ansible-tmp-1565441299.9-53318021841629/AnsiballZ_setup.py && sleep 0'
+2019-08-10 18:18:20,272 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441299.9-53318021841629/AnsiballZ_setup.py && sleep 0'
+2019-08-10 18:18:20,586 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441299.9-53318021841629/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:18:20,614 p=27696 u=ansible |  ok: [localhost]
+2019-08-10 18:18:20,619 p=27696 u=ansible |  META: ran handlers
+2019-08-10 18:18:20,631 p=27696 u=ansible |  TASK [Ansible start date] **********************************************************************************************************************************************
+2019-08-10 18:18:20,631 p=27696 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:7
+2019-08-10 18:18:20,631 p=27696 u=ansible |  Saturday 10 August 2019  18:18:20 +0530 (0:00:00.746)       0:00:00.803 ******* 
+2019-08-10 18:18:20,685 p=27696 u=ansible |  ok: [localhost] => {
+    "ansible_date_time.date": "2019-08-10"
+}
+2019-08-10 18:18:20,697 p=27696 u=ansible |  TASK [ISBC] ************************************************************************************************************************************************************
+2019-08-10 18:18:20,697 p=27696 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:10
+2019-08-10 18:18:20,697 p=27696 u=ansible |  Saturday 10 August 2019  18:18:20 +0530 (0:00:00.065)       0:00:00.868 ******* 
+2019-08-10 18:18:20,749 p=27696 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:18:20,749 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:18:20,757 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941 `" && echo ansible-tmp-1565441300.75-258332575321941="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941 `" ) && sleep 0'
+2019-08-10 18:18:20,880 p=27696 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/openstack/os_stack.py
+2019-08-10 18:18:20,880 p=27696 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27696ak1cbE/tmprjMEya TO /home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/AnsiballZ_os_stack.py
+2019-08-10 18:18:20,881 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/ /home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:18:20,888 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:18:21,261 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:18:21,303 p=27696 u=ansible |  The full traceback is:
+Traceback (most recent call last):
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/AnsiballZ_os_stack.py", line 114, in <module>
+    _ansiballz_main()
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/AnsiballZ_os_stack.py", line 106, in _ansiballz_main
+    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/AnsiballZ_os_stack.py", line 49, in invoke_module
+    imp.load_module('__main__', mod, module, MOD_DESC)
+  File "/tmp/ansible_os_stack_payload_jMw3HC/__main__.py", line 276, in <module>
+  File "/tmp/ansible_os_stack_payload_jMw3HC/__main__.py", line 238, in main
+  File "/tmp/ansible_os_stack_payload_jMw3HC/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py", line 154, in openstack_cloud_from_module
+  File "/usr/lib/python2.7/site-packages/openstack/__init__.py", line 59, in connect
+    options=options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/__init__.py", line 36, in get_cloud_region
+    return config.get_one(options=parsed_options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/loader.py", line 1077, in get_one
+    auth_plugin = loader.load_from_options(**config['auth'])
+  File "/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py", line 162, in load_from_options
+    raise exceptions.MissingRequiredOptions(missing_required)
+keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url
+
+2019-08-10 18:18:21,303 p=27696 u=ansible |  fatal: [localhost]: FAILED! => {
+    "changed": false, 
+    "module_stderr": "Traceback (most recent call last):\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/AnsiballZ_os_stack.py\", line 114, in <module>\n    _ansiballz_main()\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/AnsiballZ_os_stack.py\", line 106, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441300.75-258332575321941/AnsiballZ_os_stack.py\", line 49, in invoke_module\n    imp.load_module('__main__', mod, module, MOD_DESC)\n  File \"/tmp/ansible_os_stack_payload_jMw3HC/__main__.py\", line 276, in <module>\n  File \"/tmp/ansible_os_stack_payload_jMw3HC/__main__.py\", line 238, in main\n  File \"/tmp/ansible_os_stack_payload_jMw3HC/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py\", line 154, in openstack_cloud_from_module\n  File \"/usr/lib/python2.7/site-packages/openstack/__init__.py\", line 59, in connect\n    options=options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/__init__.py\", line 36, in get_cloud_region\n    return config.get_one(options=parsed_options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/loader.py\", line 1077, in get_one\n    auth_plugin = loader.load_from_options(**config['auth'])\n  File \"/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py\", line 162, in load_from_options\n    raise exceptions.MissingRequiredOptions(missing_required)\nkeystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url\n", 
+    "module_stdout": "", 
+    "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", 
+    "rc": 1
+}
+2019-08-10 18:18:21,303 p=27696 u=ansible |  ...ignoring
+2019-08-10 18:18:21,314 p=27696 u=ansible |  TASK [Wait until the active instance pings] ****************************************************************************************************************************
+2019-08-10 18:18:21,315 p=27696 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:21
+2019-08-10 18:18:21,315 p=27696 u=ansible |  Saturday 10 August 2019  18:18:21 +0530 (0:00:00.617)       0:00:01.486 ******* 
+2019-08-10 18:18:21,326 p=27696 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:18:21,326 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:18:21,333 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441301.33-25917276361576 `" && echo ansible-tmp-1565441301.33-25917276361576="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441301.33-25917276361576 `" ) && sleep 0'
+2019-08-10 18:18:21,463 p=27696 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/utilities/logic/wait_for.py
+2019-08-10 18:18:21,464 p=27696 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27696ak1cbE/tmptanLYz TO /home/ansible/.ansible/tmp/ansible-tmp-1565441301.33-25917276361576/AnsiballZ_wait_for.py
+2019-08-10 18:18:21,465 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441301.33-25917276361576/ /home/ansible/.ansible/tmp/ansible-tmp-1565441301.33-25917276361576/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:18:21,472 p=27696 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441301.33-25917276361576/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:18:32,123 p=27696 u=ansible |   [ERROR]: User interrupted execution
+
+2019-08-10 18:20:29,230 p=27913 u=ansible |  ansible-playbook 2.8.2
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/ansible/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/site-packages/ansible
+  executable location = /bin/ansible-playbook
+  python version = 2.7.5 (default, Jun 20 2019, 20:27:34) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+2019-08-10 18:20:29,230 p=27913 u=ansible |  Using /etc/ansible/ansible.cfg as config file
+2019-08-10 18:20:29,237 p=27913 u=ansible |  host_list declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:20:29,237 p=27913 u=ansible |  script declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:20:29,237 p=27913 u=ansible |  auto declined parsing /etc/ansible/hosts as it did not pass it's verify_file() method
+2019-08-10 18:20:29,240 p=27913 u=ansible |  Parsed /etc/ansible/hosts inventory source with ini plugin
+2019-08-10 18:20:29,644 p=27913 u=ansible |  PLAYBOOK: ISBC_license_complete7.yml ***********************************************************************************************************************************
+2019-08-10 18:20:29,644 p=27913 u=ansible |  1 plays in ISBC_license_complete7.yml
+2019-08-10 18:20:29,674 passlib.registry registered 'md5_crypt' handler: <class 'passlib.handlers.md5_crypt.md5_crypt'>
+2019-08-10 18:20:29,679 p=27913 u=ansible |  PLAY [create stack] ****************************************************************************************************************************************************
+2019-08-10 18:20:29,685 p=27913 u=ansible |  TASK [Gathering Facts] *************************************************************************************************************************************************
+2019-08-10 18:20:29,685 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:2
+2019-08-10 18:20:29,685 p=27913 u=ansible |  Saturday 10 August 2019  18:20:29 +0530 (0:00:00.052)       0:00:00.052 ******* 
+2019-08-10 18:20:29,700 p=27913 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:20:29,701 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:20:29,709 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441429.7-83331137030503 `" && echo ansible-tmp-1565441429.7-83331137030503="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441429.7-83331137030503 `" ) && sleep 0'
+2019-08-10 18:20:30,010 p=27913 u=ansible |  <localhost> Attempting python interpreter discovery
+2019-08-10 18:20:30,010 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'echo PLATFORM; uname; echo FOUND; command -v '"'"'/usr/bin/python'"'"'; command -v '"'"'python3.7'"'"'; command -v '"'"'python3.6'"'"'; command -v '"'"'python3.5'"'"'; command -v '"'"'python2.7'"'"'; command -v '"'"'python2.6'"'"'; command -v '"'"'/usr/libexec/platform-python'"'"'; command -v '"'"'/usr/bin/python3'"'"'; command -v '"'"'python'"'"'; echo ENDFOUND && sleep 0'
+2019-08-10 18:20:30,019 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python && sleep 0'
+2019-08-10 18:20:30,047 p=27913 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/system/setup.py
+2019-08-10 18:20:30,048 p=27913 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27913l3hPAG/tmpBFhzEu TO /home/ansible/.ansible/tmp/ansible-tmp-1565441429.7-83331137030503/AnsiballZ_setup.py
+2019-08-10 18:20:30,049 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441429.7-83331137030503/ /home/ansible/.ansible/tmp/ansible-tmp-1565441429.7-83331137030503/AnsiballZ_setup.py && sleep 0'
+2019-08-10 18:20:30,057 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441429.7-83331137030503/AnsiballZ_setup.py && sleep 0'
+2019-08-10 18:20:30,367 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441429.7-83331137030503/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:20:30,396 p=27913 u=ansible |  ok: [localhost]
+2019-08-10 18:20:30,401 p=27913 u=ansible |  META: ran handlers
+2019-08-10 18:20:30,413 p=27913 u=ansible |  TASK [Ansible start date] **********************************************************************************************************************************************
+2019-08-10 18:20:30,413 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:7
+2019-08-10 18:20:30,413 p=27913 u=ansible |  Saturday 10 August 2019  18:20:30 +0530 (0:00:00.727)       0:00:00.780 ******* 
+2019-08-10 18:20:30,466 p=27913 u=ansible |  ok: [localhost] => {
+    "ansible_date_time.date": "2019-08-10"
+}
+2019-08-10 18:20:30,478 p=27913 u=ansible |  TASK [ISBC] ************************************************************************************************************************************************************
+2019-08-10 18:20:30,478 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:10
+2019-08-10 18:20:30,478 p=27913 u=ansible |  Saturday 10 August 2019  18:20:30 +0530 (0:00:00.065)       0:00:00.845 ******* 
+2019-08-10 18:20:30,524 p=27913 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:20:30,525 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:20:30,532 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967 `" && echo ansible-tmp-1565441430.52-28633907213967="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967 `" ) && sleep 0'
+2019-08-10 18:20:30,655 p=27913 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/openstack/os_stack.py
+2019-08-10 18:20:30,656 p=27913 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27913l3hPAG/tmphf1oGf TO /home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/AnsiballZ_os_stack.py
+2019-08-10 18:20:30,656 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/ /home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:20:30,664 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:20:31,028 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:20:31,071 p=27913 u=ansible |  The full traceback is:
+Traceback (most recent call last):
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/AnsiballZ_os_stack.py", line 114, in <module>
+    _ansiballz_main()
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/AnsiballZ_os_stack.py", line 106, in _ansiballz_main
+    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/AnsiballZ_os_stack.py", line 49, in invoke_module
+    imp.load_module('__main__', mod, module, MOD_DESC)
+  File "/tmp/ansible_os_stack_payload_84syRU/__main__.py", line 276, in <module>
+  File "/tmp/ansible_os_stack_payload_84syRU/__main__.py", line 238, in main
+  File "/tmp/ansible_os_stack_payload_84syRU/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py", line 154, in openstack_cloud_from_module
+  File "/usr/lib/python2.7/site-packages/openstack/__init__.py", line 59, in connect
+    options=options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/__init__.py", line 36, in get_cloud_region
+    return config.get_one(options=parsed_options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/loader.py", line 1077, in get_one
+    auth_plugin = loader.load_from_options(**config['auth'])
+  File "/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py", line 162, in load_from_options
+    raise exceptions.MissingRequiredOptions(missing_required)
+keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url
+
+2019-08-10 18:20:31,072 p=27913 u=ansible |  fatal: [localhost]: FAILED! => {
+    "changed": false, 
+    "module_stderr": "Traceback (most recent call last):\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/AnsiballZ_os_stack.py\", line 114, in <module>\n    _ansiballz_main()\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/AnsiballZ_os_stack.py\", line 106, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441430.52-28633907213967/AnsiballZ_os_stack.py\", line 49, in invoke_module\n    imp.load_module('__main__', mod, module, MOD_DESC)\n  File \"/tmp/ansible_os_stack_payload_84syRU/__main__.py\", line 276, in <module>\n  File \"/tmp/ansible_os_stack_payload_84syRU/__main__.py\", line 238, in main\n  File \"/tmp/ansible_os_stack_payload_84syRU/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py\", line 154, in openstack_cloud_from_module\n  File \"/usr/lib/python2.7/site-packages/openstack/__init__.py\", line 59, in connect\n    options=options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/__init__.py\", line 36, in get_cloud_region\n    return config.get_one(options=parsed_options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/loader.py\", line 1077, in get_one\n    auth_plugin = loader.load_from_options(**config['auth'])\n  File \"/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py\", line 162, in load_from_options\n    raise exceptions.MissingRequiredOptions(missing_required)\nkeystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url\n", 
+    "module_stdout": "", 
+    "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", 
+    "rc": 1
+}
+2019-08-10 18:20:31,072 p=27913 u=ansible |  ...ignoring
+2019-08-10 18:20:31,083 p=27913 u=ansible |  TASK [Wait until the active instance pings] ****************************************************************************************************************************
+2019-08-10 18:20:31,083 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:21
+2019-08-10 18:20:31,083 p=27913 u=ansible |  Saturday 10 August 2019  18:20:31 +0530 (0:00:00.605)       0:00:01.450 ******* 
+2019-08-10 18:20:31,096 p=27913 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:20:31,096 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:20:31,105 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441431.1-222389867067920 `" && echo ansible-tmp-1565441431.1-222389867067920="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441431.1-222389867067920 `" ) && sleep 0'
+2019-08-10 18:20:31,233 p=27913 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/utilities/logic/wait_for.py
+2019-08-10 18:20:31,234 p=27913 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27913l3hPAG/tmpQwzvsn TO /home/ansible/.ansible/tmp/ansible-tmp-1565441431.1-222389867067920/AnsiballZ_wait_for.py
+2019-08-10 18:20:31,235 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441431.1-222389867067920/ /home/ansible/.ansible/tmp/ansible-tmp-1565441431.1-222389867067920/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:20:31,243 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441431.1-222389867067920/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:21:31,395 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441431.1-222389867067920/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:21:31,414 p=27913 u=ansible |  ok: [localhost] => {
+    "changed": false, 
+    "elapsed": 60, 
+    "invocation": {
+        "module_args": {
+            "active_connection_states": [
+                "ESTABLISHED", 
+                "FIN_WAIT1", 
+                "FIN_WAIT2", 
+                "SYN_RECV", 
+                "SYN_SENT", 
+                "TIME_WAIT"
+            ], 
+            "connect_timeout": 5, 
+            "delay": 60, 
+            "exclude_hosts": null, 
+            "host": "10.34.224.111", 
+            "msg": null, 
+            "path": null, 
+            "port": 2024, 
+            "search_regex": null, 
+            "sleep": 1, 
+            "state": "started", 
+            "timeout": 300
+        }
+    }, 
+    "match_groupdict": {}, 
+    "match_groups": [], 
+    "path": null, 
+    "port": 2024, 
+    "search_regex": null, 
+    "state": "started"
+}
+2019-08-10 18:21:31,428 p=27913 u=ansible |  TASK [Checking the Mgmt IP is pingable or not] *************************************************************************************************************************
+2019-08-10 18:21:31,429 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:26
+2019-08-10 18:21:31,429 p=27913 u=ansible |  Saturday 10 August 2019  18:21:31 +0530 (0:01:00.345)       0:01:01.796 ******* 
+2019-08-10 18:21:31,449 p=27913 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:21:31,449 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:21:31,458 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441491.45-19257181177681 `" && echo ansible-tmp-1565441491.45-19257181177681="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441491.45-19257181177681 `" ) && sleep 0'
+2019-08-10 18:21:31,584 p=27913 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-08-10 18:21:31,584 p=27913 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27913l3hPAG/tmppvqIpj TO /home/ansible/.ansible/tmp/ansible-tmp-1565441491.45-19257181177681/AnsiballZ_command.py
+2019-08-10 18:21:31,585 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441491.45-19257181177681/ /home/ansible/.ansible/tmp/ansible-tmp-1565441491.45-19257181177681/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:21:31,595 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441491.45-19257181177681/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:21:32,696 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441491.45-19257181177681/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:21:32,710 p=27913 u=ansible |  changed: [localhost] => {
+    "changed": true, 
+    "cmd": "ping -c2 10.34.224.111", 
+    "delta": "0:00:01.015527", 
+    "end": "2019-08-10 18:21:32.684654", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "ping -c2 10.34.224.111", 
+            "_uses_shell": true, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "rc": 0, 
+    "start": "2019-08-10 18:21:31.669127", 
+    "stderr": "", 
+    "stderr_lines": [], 
+    "stdout": "PING 10.34.224.111 (10.34.224.111) 56(84) bytes of data.\n64 bytes from 10.34.224.111: icmp_seq=1 ttl=64 time=1.29 ms\n64 bytes from 10.34.224.111: icmp_seq=2 ttl=64 time=7.92 ms\n\n--- 10.34.224.111 ping statistics ---\n2 packets transmitted, 2 received, 0% packet loss, time 1001ms\nrtt min/avg/max/mdev = 1.298/4.611/7.924/3.313 ms", 
+    "stdout_lines": [
+        "PING 10.34.224.111 (10.34.224.111) 56(84) bytes of data.", 
+        "64 bytes from 10.34.224.111: icmp_seq=1 ttl=64 time=1.29 ms", 
+        "64 bytes from 10.34.224.111: icmp_seq=2 ttl=64 time=7.92 ms", 
+        "", 
+        "--- 10.34.224.111 ping statistics ---", 
+        "2 packets transmitted, 2 received, 0% packet loss, time 1001ms", 
+        "rtt min/avg/max/mdev = 1.298/4.611/7.924/3.313 ms"
+    ]
+}
+2019-08-10 18:21:32,723 p=27913 u=ansible |  TASK [debug] ***********************************************************************************************************************************************************
+2019-08-10 18:21:32,723 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:28
+2019-08-10 18:21:32,723 p=27913 u=ansible |  Saturday 10 August 2019  18:21:32 +0530 (0:00:01.294)       0:01:03.090 ******* 
+2019-08-10 18:21:32,740 p=27913 u=ansible |  ok: [localhost] => {
+    "a.stdout_lines": "VARIABLE IS NOT DEFINED!: 'a' is undefined"
+}
+2019-08-10 18:21:32,751 p=27913 u=ansible |  TASK [To copy the config file to active node] **************************************************************************************************************************
+2019-08-10 18:21:32,751 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:29
+2019-08-10 18:21:32,751 p=27913 u=ansible |  Saturday 10 August 2019  18:21:32 +0530 (0:00:00.027)       0:01:03.118 ******* 
+2019-08-10 18:21:32,767 p=27913 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:21:32,768 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:21:32,775 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441492.77-106138571402874 `" && echo ansible-tmp-1565441492.77-106138571402874="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441492.77-106138571402874 `" ) && sleep 0'
+2019-08-10 18:21:32,787 p=27913 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-08-10 18:21:32,787 p=27913 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27913l3hPAG/tmpGivy6Q TO /home/ansible/.ansible/tmp/ansible-tmp-1565441492.77-106138571402874/AnsiballZ_command.py
+2019-08-10 18:21:32,788 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441492.77-106138571402874/ /home/ansible/.ansible/tmp/ansible-tmp-1565441492.77-106138571402874/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:21:32,795 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441492.77-106138571402874/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:21:33,187 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441492.77-106138571402874/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:21:33,199 p=27913 u=ansible |  fatal: [localhost]: FAILED! => {
+    "changed": true, 
+    "cmd": "sh /home/ansible/satyam/timeout1.sh", 
+    "delta": "0:00:00.310836", 
+    "end": "2019-08-10 18:21:33.178316", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "sh /home/ansible/satyam/timeout1.sh", 
+            "_uses_shell": true, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "msg": "non-zero return code", 
+    "rc": 1, 
+    "start": "2019-08-10 18:21:32.867480", 
+    "stderr": "Warning: Permanently added '[10.34.224.111]:2024' (ECDSA) to the list of known hosts.", 
+    "stderr_lines": [
+        "Warning: Permanently added '[10.34.224.111]:2024' (ECDSA) to the list of known hosts."
+    ], 
+    "stdout": "", 
+    "stdout_lines": []
+}
+2019-08-10 18:21:33,199 p=27913 u=ansible |  ...ignoring
+2019-08-10 18:21:33,211 p=27913 u=ansible |  TASK [To check installed software version] *****************************************************************************************************************************
+2019-08-10 18:21:33,211 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:51
+2019-08-10 18:21:33,211 p=27913 u=ansible |  Saturday 10 August 2019  18:21:33 +0530 (0:00:00.460)       0:01:03.578 ******* 
+2019-08-10 18:21:33,224 p=27913 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:21:33,225 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:21:33,231 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441493.22-216360191715822 `" && echo ansible-tmp-1565441493.22-216360191715822="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441493.22-216360191715822 `" ) && sleep 0'
+2019-08-10 18:21:33,242 p=27913 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/commands/command.py
+2019-08-10 18:21:33,243 p=27913 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27913l3hPAG/tmpoUAElz TO /home/ansible/.ansible/tmp/ansible-tmp-1565441493.22-216360191715822/AnsiballZ_command.py
+2019-08-10 18:21:33,243 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441493.22-216360191715822/ /home/ansible/.ansible/tmp/ansible-tmp-1565441493.22-216360191715822/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:21:33,250 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441493.22-216360191715822/AnsiballZ_command.py && sleep 0'
+2019-08-10 18:21:36,610 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441493.22-216360191715822/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:21:36,629 p=27913 u=ansible |  changed: [localhost] => {
+    "changed": true, 
+    "cmd": "ssh -o UserKnownHostsFile=/dev/null -o  \"stricthostkeychecking no\" -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.111 \"sh /opt/sonus/sbx/scripts/swinfo.sh\"", 
+    "delta": "0:00:03.272934", 
+    "end": "2019-08-10 18:21:36.596713", 
+    "invocation": {
+        "module_args": {
+            "_raw_params": "ssh -o UserKnownHostsFile=/dev/null -o  \"stricthostkeychecking no\" -p 2024 -i /home/ansible/cloud_ats.key root@10.34.224.111 \"sh /opt/sonus/sbx/scripts/swinfo.sh\"", 
+            "_uses_shell": true, 
+            "argv": null, 
+            "chdir": null, 
+            "creates": null, 
+            "executable": null, 
+            "removes": null, 
+            "stdin": null, 
+            "stdin_add_newline": true, 
+            "strip_empty_ends": true, 
+            "warn": true
+        }
+    }, 
+    "rc": 0, 
+    "start": "2019-08-10 18:21:33.323779", 
+    "stderr": "Warning: Permanently added '[10.34.224.111]:2024' (ECDSA) to the list of known hosts.", 
+    "stderr_lines": [
+        "Warning: Permanently added '[10.34.224.111]:2024' (ECDSA) to the list of known hosts."
+    ], 
+    "stdout": "===================================================\nSERVER:          vsbc1\nOS:              V07.00.00-R000\nEMA:             V08.00.00-R000\nSBC:             V08.00.00-R000\nSBC Type:        isbc\nManagement mode: distributed\nBuild Number:    4\n===================================================\nInstalled host role:   active\nCurrent   host role:   active\n===================================================\n\n===================================================\nSERVER:          vsbc1\nOS:              V07.00.00-R000\nEMA:             V08.00.00-R000\nSBC:             V08.00.00-R000\nSBC Type:        isbc\nManagement mode: distributed\nBuild Number:    4\n===================================================\nInstalled host role:   standby\nCurrent   host role:   standby\n===================================================", 
+    "stdout_lines": [
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   active", 
+        "Current   host role:   active", 
+        "===================================================", 
+        "", 
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   standby", 
+        "Current   host role:   standby", 
+        "==================================================="
+    ]
+}
+2019-08-10 18:21:36,642 p=27913 u=ansible |  TASK [debug] ***********************************************************************************************************************************************************
+2019-08-10 18:21:36,642 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:54
+2019-08-10 18:21:36,642 p=27913 u=ansible |  Saturday 10 August 2019  18:21:36 +0530 (0:00:03.430)       0:01:07.009 ******* 
+2019-08-10 18:21:36,668 p=27913 u=ansible |  ok: [localhost] => {
+    "d.stdout_lines": [
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   active", 
+        "Current   host role:   active", 
+        "===================================================", 
+        "", 
+        "===================================================", 
+        "SERVER:          vsbc1", 
+        "OS:              V07.00.00-R000", 
+        "EMA:             V08.00.00-R000", 
+        "SBC:             V08.00.00-R000", 
+        "SBC Type:        isbc", 
+        "Management mode: distributed", 
+        "Build Number:    4", 
+        "===================================================", 
+        "Installed host role:   standby", 
+        "Current   host role:   standby", 
+        "==================================================="
+    ]
+}
+2019-08-10 18:21:36,680 p=27913 u=ansible |  TASK [ISBC] ************************************************************************************************************************************************************
+2019-08-10 18:21:36,680 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:55
+2019-08-10 18:21:36,680 p=27913 u=ansible |  Saturday 10 August 2019  18:21:36 +0530 (0:00:00.037)       0:01:07.047 ******* 
+2019-08-10 18:21:36,695 p=27913 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:21:36,695 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:21:36,702 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065 `" && echo ansible-tmp-1565441496.69-250740857952065="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065 `" ) && sleep 0'
+2019-08-10 18:21:36,714 p=27913 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/cloud/openstack/os_stack.py
+2019-08-10 18:21:36,715 p=27913 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27913l3hPAG/tmp_FXWlU TO /home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/AnsiballZ_os_stack.py
+2019-08-10 18:21:36,715 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/ /home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:21:36,722 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/AnsiballZ_os_stack.py && sleep 0'
+2019-08-10 18:21:37,088 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'rm -f -r /home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/ > /dev/null 2>&1 && sleep 0'
+2019-08-10 18:21:37,100 p=27913 u=ansible |  The full traceback is:
+Traceback (most recent call last):
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/AnsiballZ_os_stack.py", line 114, in <module>
+    _ansiballz_main()
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/AnsiballZ_os_stack.py", line 106, in _ansiballz_main
+    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)
+  File "/home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/AnsiballZ_os_stack.py", line 49, in invoke_module
+    imp.load_module('__main__', mod, module, MOD_DESC)
+  File "/tmp/ansible_os_stack_payload_KQcIoA/__main__.py", line 276, in <module>
+  File "/tmp/ansible_os_stack_payload_KQcIoA/__main__.py", line 238, in main
+  File "/tmp/ansible_os_stack_payload_KQcIoA/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py", line 154, in openstack_cloud_from_module
+  File "/usr/lib/python2.7/site-packages/openstack/__init__.py", line 59, in connect
+    options=options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/__init__.py", line 36, in get_cloud_region
+    return config.get_one(options=parsed_options, **kwargs)
+  File "/usr/lib/python2.7/site-packages/openstack/config/loader.py", line 1077, in get_one
+    auth_plugin = loader.load_from_options(**config['auth'])
+  File "/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py", line 162, in load_from_options
+    raise exceptions.MissingRequiredOptions(missing_required)
+keystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url
+
+2019-08-10 18:21:37,100 p=27913 u=ansible |  fatal: [localhost]: FAILED! => {
+    "changed": false, 
+    "module_stderr": "Traceback (most recent call last):\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/AnsiballZ_os_stack.py\", line 114, in <module>\n    _ansiballz_main()\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/AnsiballZ_os_stack.py\", line 106, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/home/ansible/.ansible/tmp/ansible-tmp-1565441496.69-250740857952065/AnsiballZ_os_stack.py\", line 49, in invoke_module\n    imp.load_module('__main__', mod, module, MOD_DESC)\n  File \"/tmp/ansible_os_stack_payload_KQcIoA/__main__.py\", line 276, in <module>\n  File \"/tmp/ansible_os_stack_payload_KQcIoA/__main__.py\", line 238, in main\n  File \"/tmp/ansible_os_stack_payload_KQcIoA/ansible_os_stack_payload.zip/ansible/module_utils/openstack.py\", line 154, in openstack_cloud_from_module\n  File \"/usr/lib/python2.7/site-packages/openstack/__init__.py\", line 59, in connect\n    options=options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/__init__.py\", line 36, in get_cloud_region\n    return config.get_one(options=parsed_options, **kwargs)\n  File \"/usr/lib/python2.7/site-packages/openstack/config/loader.py\", line 1077, in get_one\n    auth_plugin = loader.load_from_options(**config['auth'])\n  File \"/usr/lib/python2.7/site-packages/keystoneauth1/loading/base.py\", line 162, in load_from_options\n    raise exceptions.MissingRequiredOptions(missing_required)\nkeystoneauth1.exceptions.auth_plugins.MissingRequiredOptions: Auth plugin requires parameters which were not given: auth_url\n", 
+    "module_stdout": "", 
+    "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", 
+    "rc": 1
+}
+2019-08-10 18:21:37,101 p=27913 u=ansible |  ...ignoring
+2019-08-10 18:21:37,112 p=27913 u=ansible |  TASK [Wait until the standby instance pings] ***************************************************************************************************************************
+2019-08-10 18:21:37,112 p=27913 u=ansible |  task path: /home/ansible/satyam/ISBC_license_complete7.yml:67
+2019-08-10 18:21:37,112 p=27913 u=ansible |  Saturday 10 August 2019  18:21:37 +0530 (0:00:00.432)       0:01:07.480 ******* 
+2019-08-10 18:21:37,123 p=27913 u=ansible |  <localhost> ESTABLISH LOCAL CONNECTION FOR USER: ansible
+2019-08-10 18:21:37,124 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'echo ~ansible && sleep 0'
+2019-08-10 18:21:37,130 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441497.12-194824449823307 `" && echo ansible-tmp-1565441497.12-194824449823307="` echo /home/ansible/.ansible/tmp/ansible-tmp-1565441497.12-194824449823307 `" ) && sleep 0'
+2019-08-10 18:21:37,141 p=27913 u=ansible |  Using module file /usr/lib/python2.7/site-packages/ansible/modules/utilities/logic/wait_for.py
+2019-08-10 18:21:37,142 p=27913 u=ansible |  <localhost> PUT /home/ansible/.ansible/tmp/ansible-local-27913l3hPAG/tmpeygdMN TO /home/ansible/.ansible/tmp/ansible-tmp-1565441497.12-194824449823307/AnsiballZ_wait_for.py
+2019-08-10 18:21:37,143 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c 'chmod u+x /home/ansible/.ansible/tmp/ansible-tmp-1565441497.12-194824449823307/ /home/ansible/.ansible/tmp/ansible-tmp-1565441497.12-194824449823307/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:21:37,149 p=27913 u=ansible |  <localhost> EXEC /bin/sh -c '/usr/bin/python /home/ansible/.ansible/tmp/ansible-tmp-1565441497.12-194824449823307/AnsiballZ_wait_for.py && sleep 0'
+2019-08-10 18:22:06,772 p=27913 u=ansible |   [ERROR]: User interrupted execution
+
